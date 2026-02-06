@@ -38,7 +38,6 @@ function App() {
           </div>
         </div>
 
-        {/* RED CURVE WITH BLUE LIGHT */}
         
       </div>
 
