@@ -17,7 +17,7 @@ import pic8 from "../assets/pic8.webp";
 import pic9 from "../assets/pic9.webp";
 import pic10 from "../assets/pic10.webp";
 
-/* ---------- Custom Arrows ---------- */
+
 
 function NextArrow(props) {
   return (
@@ -40,7 +40,7 @@ function PrevArrow(props) {
   );
 }
 
-/* ---------- Dummy Slider Data ---------- */
+
 
 const movies= [
      { id: 1, img: pic1 },
@@ -56,7 +56,7 @@ const movies= [
 
 ];
 
-/* ---------- Main Component ---------- */
+
 
 function SliderComponent() {
   const settings = {
