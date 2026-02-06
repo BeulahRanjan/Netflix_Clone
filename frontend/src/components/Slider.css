@@ -1,0 +1,88 @@
+.slider-container {
+  position: relative;
+  width: 95%;
+  margin: auto;
+}
+
+/* Slick wrapper */
+.slick-list {
+  overflow: hidden;
+}
+
+.slick-track {
+  display: flex;
+  align-items: center;
+}
+
+/* Each slide wrapper created by slick */
+.slick-slide {
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+/* Card */
+.card {
+  position: relative;
+
+  height: 400px;
+  border-radius: 8px;
+  /* background-color: blue; */
+}
+
+/* IMAGE */
+.card img {
+  position: absolute;
+  left: -9.4em;
+  top: 1.5em;
+  width: 79%;
+  border-radius: 8px;
+  z-index: 1;
+  height: 300px;
+}
+
+/* 🔥 DO NOT CHANGE (As Requested) */
+.card p {
+  position: absolute;
+  top: 1.5em;
+  font-size: 7.2em;
+  font-weight: 900;
+  left: -5.8em;
+  width: 100%;
+  z-index: 2;
+  color: white;
+}
+
+/* 🔥 DO NOT CHANGE (As Requested) */
+.card span {
+  position: absolute;
+  top: 1.38em;
+  color: black;
+  font-size: 7em;
+  font-weight: 900;
+  left: -10.2px;
+  width: 100%;
+  z-index: 10;
+}
+
+/* Arrows */
+.arrow {
+  position: absolute;
+  top: 40%;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: white;
+  
+  
+}
+
+.prev {
+   
+  left: -0px;
+}
+
+.next {
+  right: 0px;
+}
