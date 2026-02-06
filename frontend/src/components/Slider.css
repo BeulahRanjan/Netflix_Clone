@@ -41,28 +41,28 @@
 }
 
 /* 🔥 DO NOT CHANGE (As Requested) */
-.card p {
-  position: absolute;
-  top: 1.5em;
-  font-size: 7.2em;
-  font-weight: 900;
-  left: -5.8em;
-  width: 100%;
-  z-index: 2;
-  color: white;
+.card p{
+    position:absolute;
+    top:0.5em;
+    font-size:7.2em;
+    font-weight:900;
+    left: -6.8em;
+    width: 100%;
+    z-index: 2;
+    color: white;
 }
 
-/* 🔥 DO NOT CHANGE (As Requested) */
-.card span {
-  position: absolute;
-  top: 1.38em;
-  color: black;
-  font-size: 7em;
-  font-weight: 900;
-  left: -10.2px;
-  width: 100%;
-  z-index: 10;
+.card span{
+    position:absolute;
+    top:1.56em;   /* same as p */
+    left: -6.63em; /* same as p */
+    color: black;
+    font-size:7em;
+    font-weight:900;
+    width: 100%;
+    z-index: 10;
 }
+
 
 /* Arrows */
 .arrow {
@@ -85,4 +85,59 @@
 
 .next {
   right: 0px;
+}
+
+
+@media (max-width: 1024px) {
+
+  .card {
+    height: 320px;
+  }
+
+  .card img {
+    left: -6em;
+    width: 85%;
+    height: 240px;
+  }
+
+  .card p {
+    font-size: 5em;
+    left: -5em;
+  }
+
+  .card span {
+    font-size: 4.9em;
+    left: -4.6em;
+    /* top: 1.35em; */
+  }
+}
+
+
+@media (max-width: 640px) {
+
+  .card {
+    height: 260px;
+  }
+
+  .card img {
+    left: -3.5em;
+    width: 90%;
+    height: 200px;
+  }
+
+  .card p {
+    font-size: 3.5em;
+    left: -3.2em;
+  }
+
+  .card span {
+    font-size: 3.4em;
+    left: -3.1em;
+
+  }
+
+  /* Arrows Smaller */
+  .arrow {
+    padding: 6px;
+  }
 }

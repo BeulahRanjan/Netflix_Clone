@@ -89,8 +89,8 @@ function SliderComponent() {
         {movies.map((movie, index) => (
           <div className="card" key={movie.id}>
             <img src={movie.img} alt={`movie-${index}`} />
-            <p> {index + 1}</p>
-            <span className="number">{index + 1}</span>
+            <p> {movie.id}</p>
+            <span className="number">{movie.id}</span>
           </div>
         ))}
       </Slider>
