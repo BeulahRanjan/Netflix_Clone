@@ -1,6 +1,7 @@
 import "./App.css";
 import logo from "./assets/logo.png";
 import Slider from "./components/Slider";
+// import Card from "./components/Card";
 
 function App() {
   const handleGetStarted = () => {
@@ -45,6 +46,10 @@ function App() {
        <Slider />
 
       </div>
+{/* 
+      <div className="container">
+        <Card />
+      </div> */}
     </>
   );
 }

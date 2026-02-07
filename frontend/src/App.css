@@ -1,12 +1,13 @@
+/* ---------- Global ---------- */
 
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: black;
-  overflow-x: hidden;
+  color: white;
 }
 
-
+/* ---------- Hero Section ---------- */
 
 .app-container {
   min-height: 95vh;
@@ -23,10 +24,9 @@ body {
 
   background-size: cover;
   background-position: center;
-  color: white;
 }
 
-
+/* ---------- Navbar ---------- */
 
 .top-content {
   display: flex;
@@ -48,10 +48,11 @@ body {
   cursor: pointer;
 }
 
+/* ---------- Hero Content ---------- */
 
 .content {
   max-width: 650px;
-  margin: 120px auto 0;
+  margin: 120px auto 0 auto;
   text-align: center;
 }
 
@@ -70,7 +71,7 @@ body {
   font-size: 1.2rem;
 }
 
-
+/* ---------- Email Input ---------- */
 
 .input-group {
   display: flex;
@@ -97,20 +98,13 @@ body {
   cursor: pointer;
 }
 
-
+/* ---------- Slider Section ---------- */
 
 .subapp-container {
   padding: 60px 20px;
-  background: black;
-  color: white;
 }
 
-.subapp-container p {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-  padding-left: 40px;
-}
+/* ---------- Tablet ---------- */
 
 @media (max-width: 1024px) {
 
@@ -129,8 +123,9 @@ body {
   .content h2 {
     font-size: 1.3rem;
   }
-
 }
+
+/* ---------- Mobile ---------- */
 
 @media (max-width: 640px) {
 
@@ -175,10 +170,5 @@ body {
 
   .input-group button {
     height: 55px;
-  }
-
-  .subapp-container p {
-    padding-left: 10px;
-    font-size: 1.4rem;
   }
 }

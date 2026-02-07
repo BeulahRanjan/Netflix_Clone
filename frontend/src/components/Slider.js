@@ -8,14 +8,14 @@ import "slick-carousel/slick/slick-theme.css";
 import "./Slider.css";
 import pic1 from "../assets/pic1.webp";
 import pic2 from "../assets/pic2.webp";
-import pic3 from "../assets/pic3.webp";
-import pic4 from "../assets/pic4.webp"; 
-import pic5 from "../assets/pic5.webp";
-import pic6 from "../assets/pic6.webp";
-import pic7 from "../assets/pic7.webp";
-import pic8 from "../assets/pic8.webp";
-import pic9 from "../assets/pic9.webp";
-import pic10 from "../assets/pic10.webp";
+// import pic3 from "../assets/pic3.webp";
+// import pic4 from "../assets/pic4.webp"; 
+// import pic5 from "../assets/pic5.webp";
+// import pic6 from "../assets/pic6.webp";
+// import pic7 from "../assets/pic7.webp";
+// import pic8 from "../assets/pic8.webp";
+// import pic9 from "../assets/pic9.webp";
+// import pic10 from "../assets/pic10.webp";
 
 
 
@@ -44,15 +44,15 @@ function PrevArrow(props) {
 
 const movies= [
      { id: 1, img: pic1 },
-    { id: 2, img: pic2 },
-    { id: 3, img: pic3 },
-    { id: 4, img: pic4 },
-    { id: 5, img: pic5 },
-    { id: 6, img: pic6 },
-    { id: 7, img: pic7 },
-    { id: 8, img: pic8 },
-    { id: 9, img: pic9 },
-    { id: 10, img: pic10 },
+    { id: 2, img: pic2 }
+    // { id: 3, img: pic3 },
+    // { id: 4, img: pic4 },
+    // { id: 5, img: pic5 },
+    // { id: 6, img: pic6 },
+    // { id: 7, img: pic7 },
+    // { id: 8, img: pic8 },
+    // { id: 9, img: pic9 },
+    // { id: 10, img: pic10 },
 
 ];
 
@@ -82,9 +82,8 @@ function SliderComponent() {
 
   return (
     <div >
-
-
-       <div className="slider-container">
+      <p className="title">Trending Now</p>
+      <div className="slider-container">
       <Slider {...settings}>
         {movies.map((movie, index) => (
           <div className="card" key={movie.id}>
