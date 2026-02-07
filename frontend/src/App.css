@@ -98,13 +98,13 @@ body {
   cursor: pointer;
 }
 
-/* ---------- Slider Section ---------- */
+
 
 .subapp-container {
   padding: 60px 20px;
 }
 
-/* ---------- Tablet ---------- */
+
 
 @media (max-width: 1024px) {
 
@@ -125,7 +125,7 @@ body {
   }
 }
 
-/* ---------- Mobile ---------- */
+
 
 @media (max-width: 640px) {
 
