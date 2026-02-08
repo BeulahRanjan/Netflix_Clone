@@ -46,10 +46,7 @@ function App() {
        <Slider />
 
       </div>
-{/* 
-      <div className="container">
-        <Card />
-      </div> */}
+
     </>
   );
 }
