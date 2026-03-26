@@ -1,1 +1,36 @@
+.movie_container{
+position:relative;
+width:80%;
+margin-left: 8em;
+margin-right: 10em;
+}
 
+.text{
+    font-weight: bold;
+    font-size: 25px;;
+}
+
+.movie_image img{
+margin-left: px;;
+position: relative;
+width:13.7em;
+height:18em;
+border-radius: 1em;
+}
+
+.movie_image .numbers{
+    position: absolute;
+    margin-top: -10em;
+    margin-left: -1em;;
+}
+.movie_image span{
+    position: absolute;
+    top:1em;
+    font-size: 120px;
+    font-weight: 800;
+    color: black;
+    -webkit-text-stroke: 2px white;
+    z-index: 2;
+    margin-left: -20px;;
+
+}
