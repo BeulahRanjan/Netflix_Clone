@@ -1,11 +1,17 @@
 .card-container {
   display: flex;
-  margin-left: 10px;
+   width:73em;
+
+   margin-top:-1em;
+   margin-left: 10em;;
+   //border:2px red solid;
 }
 
 .card{
   border:2px red solid;
-  margin:13px;
-  height:17em;
-  width:15em;
+  margin:5px;
+  height:15em;
+  width:17.5em;
+  padding:13px;
+  border-radius: 10px;;
 }
