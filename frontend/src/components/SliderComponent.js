@@ -70,6 +70,7 @@ function SliderComponent() {
       {
         breakpoint: 640,
         settings:{
+          dots:true,
           infinite:false,
           speed:200,
           slidesToScroll:1,
@@ -79,6 +80,7 @@ function SliderComponent() {
       {
         breakpoint:480,
         settings:{
+          dots:true,
           infinite:false,
           speed:200,
           slidesToShow:1,

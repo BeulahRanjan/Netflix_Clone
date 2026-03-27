@@ -4,14 +4,51 @@
 
    margin-top:-1em;
    margin-left: 10em;;
-   //border:2px red solid;
+   /* border:2px red solid; */
 }
 
 .card{
-  border:2px red solid;
+  /* border:2px red solid; */
   margin:5px;
   height:15em;
   width:17.5em;
   padding:13px;
-  border-radius: 10px;;
+  border-radius: 10px;
+  background: linear-gradient(to bottom right, #010638,  #3e1b48);;
+}
+
+
+/* ≤1280px */
+@media (max-width:1280px){
+  .card-container{
+    width: 60em;
+  }
+}
+
+/* ≤1024px → 2x2 grid */
+@media (max-width:1024px){
+  .card-container{
+    display: grid;
+    grid-template-columns: repeat(2, 17.5em);
+    grid-auto-rows: 17.5em;
+    row-gap: 10px;
+    column-gap: 50px;
+  }
+}
+
+/* ≤838px */
+@media (max-width:838px){
+  .card-container{
+    width: 30em;
+  }
+}
+
+/* ≤640px → 1 column */
+@media (max-width:640px){
+  .card-container{
+    margin-left: 5em;
+    display: grid;
+    grid-template-columns: 17.5em;
+    grid-auto-rows: 17.5em;
+  }
 }
