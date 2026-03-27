@@ -1,9 +1,11 @@
 .card-container {
   display: flex;
-  margin-left: ;
+  margin-left: 10px;
 }
 
 .card{
   border:2px red solid;
-  margin:10px;
+  margin:13px;
+  height:17em;
+  width:15em;
 }
