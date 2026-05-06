@@ -13,7 +13,7 @@ export async function signup(req,res){
 
         const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if(!emailRegex.test(email)) {
-            return res.status(400).json({succcess:false, message})
+            return res.status(400).json({succcess:false, message })
         }
 
     }
