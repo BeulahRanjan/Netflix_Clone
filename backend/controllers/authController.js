@@ -58,3 +58,35 @@ export async function signup(req,res){
         process.exit(1);
     }
 }
+
+export async function login(req,res){
+    try{
+        const {email, password} = req.body;
+
+        if(!email || !password) {
+            return res.status(400).json({success:false, message:'All fields are required'});
+        }
+        const user = await User.findOne({email:email});
+        if(!user) {
+            return res.status(400).json({success:false, message:'Invalid credentials'});
+        }
+
+        const isPassword = await bcrypt.compare(password, user.password);
+        if(!isPassword) {
+            return res.status(400).json({success:false, message:'Invalid credentials'});
+        }
+
+        generateTokenAndSetCookie(user._id,res);
+        res.status(200).json({
+            success:true,
+            user:{
+                ...user._doc,
+                password:"",
+            }
+        });
+    }
+    catch(error){
+        console.error('login error:', error.message);
+        res.status(500).json({success:false, message:'Internal server error'});
+    }
+}
