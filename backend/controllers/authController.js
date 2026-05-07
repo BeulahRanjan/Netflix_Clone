@@ -90,3 +90,24 @@ export async function login(req,res){
         res.status(500).json({success:false, message:'Internal server error'});
     }
 }
+
+export async function logout(req,res){
+    try{
+        res.clearCookie('jwt-netflix');
+        res.status(200).json({success:true, message:'Logged out successfully'});
+    }
+    catch(error){
+        console.error('logout error:', error.message);
+        res.status(500).json({success:false, message:'Internal server error'});
+    }
+}
+
+export async function authCheck(req,res){
+    try{
+        res.status(200).json({success:true, user:req.user});
+    }
+    catch(error){
+        console.error('authCheck error:', error.message);
+        res.status(500).json({success:false, message:'Internal server error'});
+    }
+}
