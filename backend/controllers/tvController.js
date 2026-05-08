@@ -50,3 +50,18 @@ export async function getSimilarTV(req,res){
         res.json({ success:false, message:"Internal Server Error"});
     }
 }
+
+
+export async function getTVByCategory(req,res){
+    const { category } = req.params;
+    try{
+        const data =  await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${category}?language=en-US&page=1`);
+        res.json({ success:true, content:data.results});
+    }
+    catch(error){
+        if(error.message.includes(404)){
+            return res.status(404).send(null);
+        }
+        res.json({ success:false, message:"Internal Server Error"});
+    }
+}
