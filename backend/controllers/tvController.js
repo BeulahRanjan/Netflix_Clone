@@ -39,3 +39,14 @@ export async function getTVDetails(req, res) {
         res.json({ success:false, messsage:"intenal server Error"});
     }
 }
+
+export async function getSimilarTV(req,res){
+    const { id } = req. params;
+    try{
+         const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/series_id/similar?language=en-US&page=1`);
+         res.json({success:true, content:data.results});
+    }
+    catch(error){
+        res.json({ success:false, message:"Internal Server Error"});
+    }
+}
