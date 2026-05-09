@@ -7,6 +7,6 @@ router.get('/trending', getTrendingTV);
 router.get('/:id/trailers', getTVTrailers);
 router.get('/:id/details', getTVDetails);
 router.get('/:id/similar', getSimilarTV);
-router.get('/:category', getTVByCategory);
+router.get('/:category', getTVByCategory );
 
 export default router;
