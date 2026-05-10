@@ -108,6 +108,6 @@ export async function authCheck(req,res){
     }
     catch(error){
         console.error('authCheck error:', error.message);
-        res.status(500).json({success:false, message:'Internal server error'});
+        res.status(500).json({success:false, message:'Internal server error'}); 
     }
 }
