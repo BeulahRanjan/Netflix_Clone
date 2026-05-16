@@ -55,3 +55,28 @@ catch(error){
     res.status(500).json({ success:false, message: "Internal Server Error"});
  }
 }
+
+export async function searchTv (req, res){
+    const {query} = req.params;
+try{
+    const response = await fetchFromTMDB(`https://api.themoviedb.org/3/search/tv?include_adult=false&language=en-US&page=1`);
+
+    await User.findByIdAndUpdate(req.user._id,{
+        $push:{
+            searchHistory:{
+                id: response.results[0].id,
+                image: response.results[0].poster_path,
+                title: response.results[0].name,
+                searchType:"tv",
+                createdAt: new Date(),  
+            },
+        },
+    });
+    res.json({success:true, content:response.results});
+}
+catch(error){
+    console.log("Error in searchTv Controller:", error.message);
+    res.status(500).json({success:false, message:"Internal Server Error"});
+}
+}
+
