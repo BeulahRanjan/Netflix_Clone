@@ -1,7 +1,7 @@
 import express from 'express';
 import { getSearchHistory,removeItemFromSearchHistory,
     searchMovie,searchPerson,searchTv
- } from '../controllers/searchController';
+ } from '../controllers/searchController.js';
 
  const router = express.Router();
 
