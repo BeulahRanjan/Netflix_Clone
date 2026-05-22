@@ -19,5 +19,17 @@ export const useAuthStore = create((set) => ({
             toast.error(error.response.data.message || "Signup failed");
             set({ isSigningUp:false, user:null});
         }
+    },
+    login:async (credentials) => {
+        set({isLoggingIn:true});
+        try{
+            const response =await axios.post("/api/v1/auth/login", credentials);
+            set({user:response.data.user,isLoggingIn:false});
+            toast.success("Logged in successfully");
+        }
+        catch(error){
+            set({ isLoggingIn:false, user:null});
+            toast.error(error.response.data.message || "Login failed");
+        }
     }
 }))
