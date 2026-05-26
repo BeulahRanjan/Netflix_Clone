@@ -13,7 +13,7 @@ function App(){
     authCheck();
    }, [authCheck]);
 
-    if(isCheckingAUth){
+    if(isCheckingAuth){
       return <div className="h-screen">
         <div className= "flex justify-center items-center h-full bg-black">
           <Loader className= "animate-spin size-10 text-red-600" />
@@ -28,3 +28,5 @@ function App(){
       </>
     )
 }
+
+export default App;

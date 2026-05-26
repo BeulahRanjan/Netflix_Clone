@@ -6,7 +6,15 @@ export default defineConfig({
   plugins: [react()],
   server:{
     proxy:{
-      '/api': 'http://localhost',
+      '/api/auth':{
+        target:'http://localhost:5001',
+        changeOrigin: true,
+      },
+
+      '/api/movies':{
+        target:'http://localhost:5000',
+        changeOrigin: true,
     }
+  }
   }
 })
