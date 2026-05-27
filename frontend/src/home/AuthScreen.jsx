@@ -50,11 +50,27 @@ return(
                         </p>
                     </div>
                     <div className='flex-1 relative'>
-
+                        <img src='/tv.png' alt ='Tv image' className='mt-4 z-20 relative'/>
+                         <video
+                          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-1/2 z-10"
+                            playsInline
+                            autoPlay={true}
+                            muted
+                            loop
+                            >
+                                <source src="frontend_public_hero-vid.m4v" type="video/mp4"/>
+                         </video>
                     </div>
                 </div>
 
             </div>
+            <div className="h-2 w-full bg-[#232323]" aria-hidden="true">
+                <div>
+                    
+                </div>
+
+            </div>
+
         </div>
     </div>
 
