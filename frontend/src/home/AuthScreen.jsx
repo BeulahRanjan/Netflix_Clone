@@ -83,9 +83,46 @@ return(
                         </div>
                     </div>
 
-                    <div className
+                    <div className="flex-1 md:text-left text-center">
+                        <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-balance">
+                            Download your shows to watch offline
+                        </h2>
+                        <p className="text-lg md:text-xl">
+                            Save your favorites easily and always have something to watch
+                        </p>
+                    </div>
                 </div>
 
+            </div>
+
+            <div className="h-2 w-full bg-[#232323]" aria-hidden="true">
+                <div className="py-10 bg-black text-white">
+                    <div className="flex max-w-^xl mx-auto items-center justify-center md:flex-row flex-col px-4 md:px-2">
+                        <div className="flex-1 text-center md:text-left">
+                            <h2 className="text-4xl md:text-5xl font-extrabold mb-4 ">
+                                Watch everywhere
+                            </h2>
+                            <p className="text-lg md:text-xl">
+                                Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV without paying more.
+                            </p>
+                        </div>
+                        <div className="flex-1 relative overflow-hidden">
+                            <img src="/device-pile.png" alt="Device Pile" className="mt-4 relative z-20"/>
+                            <video
+                               className="absolute top-2 left-1/2 -translate-x-1/2 h-4/6 z-10 max-w-[63%]"
+                               playInline
+                               autoPlay={true}
+                               muted
+                               loop
+                            >
+                                <source src="frontend_public_video-devices.m4v" type="video/mp4"/>
+                             </video>
+                        </div>
+                    </div>
+                </div>
+                <div className="h-2 w-full bg-[#232323]" aria-hidden="true">
+                    <div className
+                </div>
             </div>
 
         </div>
