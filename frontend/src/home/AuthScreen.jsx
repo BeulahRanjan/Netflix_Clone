@@ -18,9 +18,24 @@ return(
                 Sign In
             </Link>
         </header>
+
+        <div className="flex flex-col items-center justify-center  text-center py-40 text-white max-w-6xl mx-auto">
+            <h1 className='text-4xl md:text-6xl font-bold mb-4'> Unlimited movies, TV shows, and more</h1>
+            <p className='text-lg mb-4'> Watch anywhere. Cancel anytime</p>
+            <p className='mb-4'>Ready to watch? Enter your email to create or restart your membership.</p>
+
+            <form className ='flex flex-col md:flex-row gap-4 w-1/2' onSubmit={handleSubmit}>
+                <input
+                    type="email"
+                    placeholder="Email address"
+                    className="p-2 rounded flex-1 bg-black/80 border border-gray-700"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}/>
+            </form>
+        </div>
     </div>
 
-    <div></div>
+    
 )
 }
  export default AuthScreen;
