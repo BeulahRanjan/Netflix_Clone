@@ -121,7 +121,21 @@ return(
                     </div>
                 </div>
                 <div className="h-2 w-full bg-[#232323]" aria-hidden="true">
-                    <div className
+                    <div className="py-10 bg-black text-white">
+                        <div className="flex max-w-6xl mx-auto items-center justify-center md:flex-row flex-col px-4 md:px-2">
+                            <div className="flex-1 relative">
+                                <img src="/kids.png" alt="Enjoy on your TV"   className="mt-4"/>
+                            </div>
+                            <div className="flex-1 text-center md:text-left">
+                                <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+                                    Create profiles for kids
+                                </h2>
+                                <p className="text-lg md:text-xl">
+                                    Send kids on adventures with their favorite characters in a space made just for them - free with your membership.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
