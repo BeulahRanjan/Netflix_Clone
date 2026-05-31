@@ -32,7 +32,7 @@ const MovieSlider =({category})=>{
         sliderRef.current.scrollBy({left:sliderRef.current.OffsetWidth, behaviour:"smooth"});
     };
     return(
-        <div className="bg-black text-white relative px-5 md:px-20"
+        <div className="bg-black text-white relative px-5 md:px-20 "
             onMouseEnter={() => setShowArrows(true)}
             onMouseLeave={() => setShowArrows(false)}>
         
