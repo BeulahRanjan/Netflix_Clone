@@ -11,9 +11,9 @@ const MovieSlider =({category})=>{
     const [showArrows,setShowArrows] = useState(false);
     const sliderRef = useRef(null);
 
-    // const formattedCategoryName =category.replaceAll("_"," ")[0].toUpperCase()+category.replaceAll("_"," ").slice(1);
+    const formattedCategoryName =category.replaceAll("_"," ")[0].toUpperCase()+category.replaceAll("_"," ").slice(1);
 
-    // const formattedContentType=contentType==="movie"?"Movies":"TVShows";
+    const formattedContentType=contentType==="movie"?"Movies":"TVShows";
 
     useEffect(()=>{
         const getContent =async()=>{
@@ -37,7 +37,7 @@ const MovieSlider =({category})=>{
             onMouseLeave={() => setShowArrows(false)}>
         
         <h2 className='mb-4 text-2xl font bold'>
-            {/* {formattedCategoryName} {formattedContentType} */}
+            {formattedCategoryName} {formattedContentType}
 
         </h2>
 
@@ -55,6 +55,21 @@ const MovieSlider =({category})=>{
             ))}
 
         </div>
+
+        { showArrows && (
+            <>
+            <button className="absolute top-1/2 -translate-y-1/2 left-5 md:left-24 flex items-center justify-center 
+            size-12 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 text-white z-10" onClick={scrollLeft}>
+                <ChevronLeft size={24}/>
+            </button>
+
+            <button className='absolute top-1/2 -translate-y-1/2 right-5 md:right-24 flex items-center justify-center
+            size-12 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 text-white z-10' onClick={scrollRight}>
+                <ChevronRight size={24}/>
+            </button>
+            </>
+        )
+        }
         </div>
     )
 }
