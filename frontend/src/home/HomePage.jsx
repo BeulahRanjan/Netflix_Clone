@@ -7,7 +7,7 @@ const HomePage = () => {
     const {user} = useAuthStore();
     return(
         <div>
-            {user ? <AuthScreen /> : <MovieSlider />}
+            {user ? <AuthScreen /> : <HomeScreen /> }
         </div>
     )
 }
