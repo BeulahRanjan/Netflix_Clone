@@ -24,7 +24,7 @@ function HomeScreen() {
   return (
     <>
     <div className='relative h-screen text-white'>
-
+      <Navbar/>
     </div>
     </>
   )
