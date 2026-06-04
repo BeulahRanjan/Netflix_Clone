@@ -60,7 +60,7 @@ function HomeScreen() {
 
         <div className='flex mt-8'>
           <Link 
-           to={`/watch/${trendingCOntent?.id}`}
+           to={`/watch/${trendingContent?.id}`}
            className='bg-white hover:bg-white/80 text-blacck font-bold py-2 px-4 rounded mr-4 flex items-center'>
             <Play className='size-6 mr-2 fill-black'/>
             Play
