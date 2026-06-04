@@ -1,3 +1,6 @@
+import dns from "dns";
+
+dns.setDefaultResultOrder("ipv4first");
 import express from "express";
 import authRoutes from "./routes/authRoutes.js";
 import movieRoutes from "./routes/movieRoutes.js";
@@ -16,8 +19,13 @@ const _dirname=path.resolve();
 app.use(express.json());
 app.use(cookieParser());
 
+// app.get("/", (req, res) => {
+//     res.send("Backend is running on port " + PORT);
+// });
+
 app.get("/", (req, res) => {
-    res.send("Backend is running on port " + PORT);
+    console.log(`Request handled by port ${PORT}`);
+    res.send(`Backend is running on port ${PORT}`);
 });
 
 app.use("/api/v1/auth", authRoutes);

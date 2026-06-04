@@ -29,7 +29,7 @@ export async function searchPerson(req, res) {
 }
 
 export async function searchMovie(req,res){
-    const query = req.params;
+    const {query} = req.params;
 
     try{
         const response = await fetchFromTMDB(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`);
@@ -59,7 +59,7 @@ catch(error){
 export async function searchTv (req, res){
     const {query} = req.params;
 try{
-    const response = await fetchFromTMDB(`https://api.themoviedb.org/3/search/tv?include_adult=false&language=en-US&page=1`);
+    const response = await fetchFromTMDB(`https://api.themoviedb.org/3/search/tv?query=${query}&include_adult=false&language=en-US&page=1`);
 
     await User.findByIdAndUpdate(req.user._id,{
         $push:{
@@ -83,15 +83,16 @@ catch(error){
 
 export async function getSearchHistory(req,res){
     try{
-        req.status(200).json({success:true, content:req.user.searchHistory});
+        res.status(200).json({success:true, content:req.user.searchHistory});
     } 
     catch(error){
+        console.log("Error in getSearchHistory controller:", error.message);
         res.status(500).json({ success:false, message:"Internal Server Error"});
     }
 }
 
 export async function removeItemFromSearchHistory(req,res){
-    const { id } = req.params;
+    let { id } = req.params;
 
     id = parseInt(id);
     try{
