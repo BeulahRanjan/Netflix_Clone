@@ -25,11 +25,13 @@ const MovieSlider =({category})=>{
 
     const scrollLeft=()=>{
         if(sliderRef.current) {
-            sliderRef.current.scrollBy({ left: -sliderRef.current.offsetWidth, behaviour:"smooth"});
+            sliderRef.current.scrollBy({ left: -sliderRef.current.offsetWidth, 
+                behavior:"smooth"});
         }
     };
     const scrollRight=()=>{
-        sliderRef.current.scrollBy({left:sliderRef.current.OffsetWidth, behaviour:"smooth"});
+        sliderRef.current.scrollBy({left:sliderRef.current.offsetWidth, 
+            behavior:"smooth"});
     };
     return(
         <div className="bg-black text-white relative px-5 md:px-20 "
