@@ -76,6 +76,11 @@ function HomeScreen() {
       </div>
 
     </div>
+    <div className='flex flex-col gap-10 bg-black py-10'>
+      {contentType === "movie" ?
+      MOVIE_CATEGORIES.map((category)=> <MovieSlider key ={category} category={category}/>) :
+      TV_CATEGORIES.map((category)=> <MovieSlider key ={category} category={category}/>)}
+    </div>
     </>
   )
 }
