@@ -27,7 +27,7 @@ return(
                 <label htmlFor='email'  classname='text-sm font-medium text-gray-300 block'> Email</label>
                 <input type='email' 
                  className='w-full px-3 py-2 mt-1 border border-gray-700 rounded-md bg-transparent text-white focus:outline-none focus:ring'
-                 placeholder='you@example.com'
+                 placeholder='your@example.com'
                  id='email'
                  value={email}
                  onChange={(e) => setEmail(e.target.value)}/>
@@ -39,7 +39,18 @@ return(
                  id='password'
                  value={password}
                  onChange={(e)=> setPassword(e.target.value)}/>
+
+                 <button className='w-full py-2 px-4 bg-red-600 text-white font-semibold rounded-md hover:bg-red-800 focus:outline-none focus:ring' type='submit'>
+                    Login
+                 </button>
             </form>
+            <div className='text-center text-gray-300'>
+                Don't have an account? {"  "}
+                <Link to='/signup' className='text-red-600 hover:underline'>
+                Log In
+                </Link>
+
+            </div>
             </div>
         </div>
     </div>
