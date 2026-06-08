@@ -3,7 +3,7 @@ import {Toaster} from "react-hot-toast";
 import { useAuthStore } from "./store/authUser";
 import {useEffect} from "react";
 import {Loader} from "lucide-react";
-import HomePage from "./home/HomePage";
+import HomePage from "./pages/home/HomePage";
 
 function App(){
   const {user, isCheckingAuth, authCheck} = useAuthStore();

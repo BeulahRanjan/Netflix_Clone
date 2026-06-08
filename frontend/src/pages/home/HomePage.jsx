@@ -1,13 +1,14 @@
 import HomeScreen from "../home/HomeScreen";
 import AuthScreen from "../home/AuthScreen";
-import {useAuthStore } from "../store/authUser";
-import Navbar from "../components/Navbar";
-import MovieSlider from "../components/MovieSlider";
+import {useAuthStore } from "../../store/authUser";
+import Navbar from "../../components/Navbar.jsx";
+import MovieSlider from "../../components/MovieSlider.jsx";
+import LoginPage from "../LoginPage.jsx";
 const HomePage = () => {
     const {user} = useAuthStore();
     return(
         <div>
-            {user ? <AuthScreen /> : <HomeScreen /> }
+            {user ? <AuthScreen /> : <LoginPage /> }
         </div>
     )
 }
