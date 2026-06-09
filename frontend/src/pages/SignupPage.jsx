@@ -22,7 +22,21 @@
                         <img src="/netflix-logo.png" alt="logo" className='w-52'/>
                     </Link>
                 </header>
-                
+                <div className='flex justify-center items-center mt-20 mx-3'>
+                    <div className='w-full max-w-md p-8 space-y-6 bg-black/50 rounded-lg shadow-md'>
+                    <h1 className='text-center text-white text-2xl font-bold mb-4'>Sign Up</h1>
+                    <form className='space-y-4' onSubmit={handleSubmit}>
+                        <label htmlFor='email' className='text-sm font-medium text-gray-300 block '>Email</label>
+                        <input type='email'
+                        className='w-full px-3 py-2 mt-1 border border-gray-700 rounded-md bg-transparent text-white focus:outline-none focus:ring'
+                        placeholder='you@example.com'
+                        id='email'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </form>
+                    </div>
+                </div>
             </div>
         )
     }
