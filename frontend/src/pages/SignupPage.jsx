@@ -53,7 +53,15 @@
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         />
+
+                        <button className='w-full py-2 px-4 bg-red-600 text-white font-semibold rounded-md hover:bg-red-8-- focus:outline-none focus:ring' type='submit'>
+                            Sign Up
+                        </button>
                     </form>
+                    <div className='text-center text-gray-300'>
+                        Already have an account? {" "}
+                        <Link to ='/login' className='text-red-600 hover:underline'>Log In</Link>
+                    </div>
                     </div>
                 </div>
             </div>
