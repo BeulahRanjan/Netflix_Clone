@@ -7,6 +7,7 @@
         const {searchParams} = new URL(document.location);
         const emailValue = searchParams.get('email')
         const [email, setEmail] = React.useState(emailValue || '');
+        const [username, setUsername]=React.useState('');
         const [password, setPassword] = React.useState('');
         const {signup} = useAuthStore();
 
@@ -33,6 +34,15 @@
                         id='email'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        />
+
+                        <label htmlFor='username' className='text-sm font-medium text-gray-300 block'>User Name</label>
+                        <input type="text"
+                        className="w-full px-3 py-2 mt-1 border border-gray-700 rounded-md bg-transparent text-white focus:outline-none focus:ring" 
+                        placeholder='johndoe'
+                        id='username'
+                        value={username}
+                        onChange={(e) =>setUserName(e.target.value)}
                         />
                     </form>
                     </div>
