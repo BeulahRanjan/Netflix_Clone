@@ -1,7 +1,15 @@
-import React from 'react'
+import {Link} from "react-router-dom";
 
-export default function NotFoundPage() {
-  return (
-    <div>NotFoundPage</div>
-  )
+const NotFoundPage = () => {
+    return(
+        <div
+        className="min-h-screen bg-cover bg-center flex flex-col justify-center items-center text-white"
+        style={{backgroundImage: `url('/404.png')`}}>
+            <header className='absolute top-0 left-0 p-4 bg-black w-full'>
+                
+            </header>
+        </div>
+    )
 }
+
+export default NotFoundPage;
