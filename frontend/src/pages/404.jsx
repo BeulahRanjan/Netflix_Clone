@@ -10,7 +10,12 @@ const NotFoundPage = () => {
                 <img src="/netflix-logo.png" alt="Netflix" className="h-8" />
                 </Link>
             </header>
-            
+            <main className='text-center error-page--content z-10'>
+                <h1 className='text-7xl font-semibold mb-4'>Lost your way?</h1>
+                <p className="mb-6 text-xl">Sorry, we can&pos;t find that page. You&pos;ll find losts to explore on the home page.</p>
+
+
+            </main>
         </div>
     )
 }
