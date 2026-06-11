@@ -47,6 +47,6 @@ background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.1)),url("hero.png"
     border-radius:6px;
 }
 
--webkit-scrollbar-track{
+::-webkit-scrollbar-track{
     background-color: #1a202c;
 }
