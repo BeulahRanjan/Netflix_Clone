@@ -16,3 +16,23 @@ function formatData(dateString) {
 
     return `${month} ${day}, ${year}`;
 }
+
+const SearchHistoryPage = () => {
+    const [searchHistory,setSearchHistory]= useState([]);
+
+    useEffect(()=>{
+        const getSearchHistory = async()=>{
+            try{
+                const res = await axios.get(`/api/v1/search/history`);
+                setSearchHistory(res.data.content);
+            }
+            catch(error){
+                console.log(error);
+                setSearchHistory([]);
+            }
+        };
+        getSearchHistory();
+    },[]);
+}
+
+export default SearchHistoryPage;
