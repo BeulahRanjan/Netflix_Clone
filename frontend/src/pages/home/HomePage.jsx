@@ -1,11 +1,11 @@
 import AuthScreen from "../home/AuthScreen";
 import {useAuthStore } from "../../store/authUser";
-import NotFoundPage from "../404.jsx";
+import SearchHistoryPage from "../SearchHistoryPage";
 const HomePage = () => {
     const {user} = useAuthStore();
     return(
         <div>
-            {user ? <AuthScreen /> : <NotFoundPage /> }
+            {user ? <AuthScreen /> : <SearchHistoryPage /> }
         </div>
     )
 }
