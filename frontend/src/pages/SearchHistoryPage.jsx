@@ -33,6 +33,31 @@ const SearchHistoryPage = () => {
         };
         getSearchHistory();
     },[]);
+
+    const handleDelete= async(entry)=>{
+        try{
+            await axios.delete(`/api/v1/search/history/${entry.id}`);
+            setSearchHistory(searchHistory.filter((item) => item.id !== entry.id));
+        }
+         catch(error){
+            console.log(error);
+            toast.error("Failed to delete search item");
+         }
+    };
+
+    if(searchHistory?.length ===0){
+        return (
+            <div className="bg-black min-h-screen text-white">
+                <Navbar/>
+                <div className="max-w-6xl mx-auto px-4 py-8">
+                    <h1 className="text-3xl font-bold mb-8">Search History</h1>
+                    <div className="flex justify-center items-center h-96">
+                        <p className="text-xl">No search history found</p>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }
 
 export default SearchHistoryPage;
