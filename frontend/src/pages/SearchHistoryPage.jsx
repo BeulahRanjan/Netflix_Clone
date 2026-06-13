@@ -81,11 +81,11 @@ const SearchHistoryPage = () => {
                                     ? "bg-red-600": entry.searchType ==="tv"
                                     ? "bg-blue-600":"bg-green-600"
                                 }`}>
-                                    {entry.searchType[0]. toUpperCase()+entry.searchType.slice(1)}
+                                    {entry.searchType[0].toUpperCase()+entry.searchType.slice(1)}
                                 </span>
                                 <Trash
                                     className="size-5 ml-4 cursor-pointer over:fill-red-600 hover:text-red-600"
-                                    onClick={() => handleDelete(entry )}/>
+                                    onClick={() => handleDelete(entry)}/>
                         </div>
                     ))}
                 </div>
