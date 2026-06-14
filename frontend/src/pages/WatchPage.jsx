@@ -168,7 +168,29 @@ const WatchPage = () =>{
                         className="max-h-[600px] rounded-md"/>
                 </div>
                 
-                {}
+                {similarContent.length > 0 && (
+                    <div className="mt-12 max-w-5xl mx-auto relative">
+                        <h3 className="text-3xl font-bold mb-4">SimilarMovies/Tv Shows</h3>
+
+                        <div className="flex overflow-x-scroll scrollbar-hide gap-4 pb-4 group" ref={sliderRef}>
+                            {similarContent.map((content) => {
+                                if(content.poster_path === null) return null;
+                                return (
+                                    <Link key ={content.id} to={`/watch/${content.id}`} className="w-52 flex-none">
+                                        <img 
+                                            src={SMALL_IMG_BASE_URL + content.poster_path}
+                                            alt="Poster path"
+                                            className="w-full h-auto rounded-md" />
+                                        <h4 className="mt-2 text-lg  font-semibold">{content.title || content.name}</h4>
+                                    </Link>
+                                );
+                            })}
+
+
+                        </div>
+
+                    </div>
+                )}
 
 
         
