@@ -49,6 +49,23 @@ const WatchPage = () =>{
             }
         };
     getSimilarContent()},[contentType,id]);
+
+    useEffect(() => {
+        const getContentDetails = async () => {
+            try{
+                const res = await axios.get(`/api/v1/${contentType}/${id}/details`);
+                setContent(res.data.content);
+            }
+            catch(error){
+                if(error.message.includes("404")){
+                    setContent(null);
+                }
+            }
+            finally{
+                setLoading(false);
+            }
+        };
+     getContentDetails();}, [contentType, id]);
 }
 
 export default WatchPage;
