@@ -83,7 +83,25 @@ const WatchPage = () =>{
         if(sliderRef.current) sliderRef.current.scrollBy({ left: sliderRef.current.offsetWidth, behavior:"smooth"});
      };
 
+     if(loading)
+        return(
+    <div className="min-h-screen bg-black p-10">
+        <WatchPageSkeleton/>
+    </div>
+    );
 
+    if(!content){
+        return(
+            <div className="bg-black text-white h-screen">
+                <div className="max-w-6xl mx-auto">
+                    <Navbar />
+                    <div className="text-center mx-auto px-4 py-8 h-full mt-40">
+                        <h2 className="text-2xl sm:text-5xl font-bold text-balance">Content not found 😥</h2>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 
 }
 
