@@ -1,11 +1,11 @@
 import AuthScreen from "../home/AuthScreen";
 import {useAuthStore } from "../../store/authUser";
-import SearchHistoryPage from "../SearchHistoryPage";
+import WatchPageSkeleton from "../../components/WatchPageSkeleton.jsx";
 const HomePage = () => {
     const {user} = useAuthStore();
     return(
         <div>
-            {user ? <AuthScreen /> : <SearchHistoryPage /> }
+            {user ? <AuthScreen /> : <WatchPageSkleteton /> }
         </div>
     )
 }
