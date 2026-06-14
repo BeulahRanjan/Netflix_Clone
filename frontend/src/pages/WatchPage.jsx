@@ -66,6 +66,25 @@ const WatchPage = () =>{
             }
         };
      getContentDetails();}, [contentType, id]);
+
+     const handleNext = () => {
+        if(currentTrialerIdx < trailers.length-1) setCurrentTrailerIdx(currentTrailerIdx + 1);
+     };
+
+     const handlePrev = () => {
+        if(currentTTrailerIdx > 0) setCurrentTrailerIdx(currentTrailerIdx -1);
+     };
+
+     const scrollLeft = () => {
+        if(sliderRef.current) sliderRef.current.scrollBy({ left: -sliderRef.current.offsetWidth, behavior: "smooth"});
+     };
+
+     const scrollRight = () => {
+        if(sliderRef.current) sliderRef.current.scrollBy({ left: sliderRef.current.offsetWidth, behavior:"smooth"});
+     };
+
+
+
 }
 
 export default WatchPage;
