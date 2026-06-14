@@ -118,6 +118,15 @@ const WatchPage = () =>{
                         onClick={handleNext}>
                             <ChevronLeft size={24}/>
                         </button>
+
+                        <button className={`
+                        bg-gray-500/70 hover:bg-gray-500 text-white py-2 px-4 rounded ${
+                            currentTrailerIdx === trailers.length -1? "opacity-50 cursor-not-allowed":""}
+                        }`}
+                        disabled={currentTrailerIdx === trailers.length-1}
+                        onClick={handleNext}>
+                            <ChevronRight size={24} />
+                        </button>
                     </div>
                 )}
 
@@ -139,24 +148,11 @@ const WatchPage = () =>{
                     ) }
                 </div>
 
-                <div className="mb-4 md:mb-0">
-                    <h2 className="text-5xl font-bold text-balance">
-                        {content?.title || content?.name}
-                    </h2>
-                    <p className="mt-2 text-lg">
-                        {formatReleaseDate(content?.realease_date || content?.first_air_date)} |{" "}
-                        {content?.adult ? (
-                            <span className="text-red-600">18+</span>
-                        ):(
-                            <span className="text-green-600">PG-13</span>
-                        )}{" "}
-                    </p>
-                    <p className="mt-4 text-lg">{content?.overview}</p>
-                </div>
-                <img
-                    src={ORIGINAL_IMG_BASE_URL + content?.poster_path}
-                    alt="Poster image"
-                    className="max-h-[600px] rounded-md"/>
+                <div></div>
+                
+
+
+        
             </div>
         </div>
     )
