@@ -35,6 +35,20 @@ const WatchPage = () =>{
         };
         getTrailers();
     }, [contentType, id]);
+
+    useEffect(() =>{
+        const getSimilarContent =async () =>{
+            try{
+                const res = await axios.get(`/api/v1/${contentType}/${id}/similar`);
+                setSimilarContent(res.data.similar);
+            }
+            catch(error){
+                if(error.message.includes("404")) {
+                    setSimilarContent([]);
+                }
+            }
+        };
+    getSimilarContent()},[contentType,id]);
 }
 
 export default WatchPage;
