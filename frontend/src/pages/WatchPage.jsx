@@ -80,7 +80,7 @@ const WatchPage = () =>{
      };
 
      const scrollRight = () => {
-        if(sliderRef.current) sliderRef.current.scrollBy({ left: sliderRef.current.offsetWidth, behavior:"smooth"});
+        if(sliderRef .current) sliderRef.current.scrollBy({ left: sliderRef.current.offsetWidth, behavior:"smooth"});
      };
 
      if(loading)
