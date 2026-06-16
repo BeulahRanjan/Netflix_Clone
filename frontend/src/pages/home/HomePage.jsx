@@ -1,11 +1,11 @@
 import AuthScreen from "../home/AuthScreen";
 import {useAuthStore } from "../../store/authUser";
-import WatchPage from "../WatchPage";
+import SearchPage from "../SearchPage";
 const HomePage = () => {
     const {user} = useAuthStore();
     return(
         <div>
-            {user ? <AuthScreen /> : <WatchPage /> }
+            {user ? <AuthScreen /> : <SearchPage /> }
         </div>
     )
 }
