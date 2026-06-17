@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar.jsx";
 import { Search } from "lucide-react";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { ORIGINAL_IMG_BASE_URL } from "../utils/constants.jsx";
+import { ORIGINAL_IMG_BASE_URL } from "../utils/constants.js";
 import { Link } from "react-router-dom";
 
 const SearchPage = () => {

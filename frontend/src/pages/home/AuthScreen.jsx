@@ -112,7 +112,7 @@ return(
                             <img src="/device-pile.png" alt="Device Pile" className="mt-4 relative z-20"/>
                             <video
                                className="absolute top-2 left-1/2 -translate-x-1/2 h-4/6 z-10 max-w-[63%]"
-                               playInline
+                               playinline="true"
                                autoPlay={true}
                                muted
                                loop

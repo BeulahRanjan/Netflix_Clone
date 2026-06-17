@@ -1,11 +1,11 @@
-import AuthScreen from "../home/AuthScreen";
+import AuthScreen from "../home/AuthScreen.jsx";
+import HomeScreen from "../home/HomeScreen.jsx"
 import {useAuthStore } from "../../store/authUser";
-import SearchPage from "../SearchPage";
 const HomePage = () => {
     const {user} = useAuthStore();
     return(
         <div>
-            {user ? <AuthScreen /> : <SearchPage /> }
+            {user ? <HomeScreen /> : <AuthScreen /> }
         </div>
     )
 }
