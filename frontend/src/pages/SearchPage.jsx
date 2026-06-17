@@ -60,6 +60,18 @@ const SearchPage = () => {
                             Person
                         </button>
                 </div>
+
+                <form className="flex gap-2 items-strectch mb-8 max-w-2xl mx-auto" onSubmit={handleSearch}>
+                    <input
+                        type="text"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        placeholder={"Search for a " + ativeTab}
+                        className="w-full p-2 rounded bg-gray-800 text-white"/>
+                    <button className="bg-red-600 hover:bg-red-700 text-white p-2 rounded">
+                        <Search className="size-6"/>
+                    </button>
+                </form>
             </div>
 
         </div>
