@@ -96,7 +96,7 @@ const WatchPage = () =>{
                 <div className="max-w-6xl mx-auto">
                     <Navbar />
                     <div className="text-center mx-auto px-4 py-8 h-full mt-40">
-                        <h 2 className="text-2xl sm:text-5xl font-bold text-balance">Content not found 😥</h2>
+                        <h2 className="text-2xl sm:text-5xl font-bold text-balance">Content not found 😥</h2>
                     </div>
                 </div>
             </div>
