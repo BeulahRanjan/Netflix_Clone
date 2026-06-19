@@ -16,7 +16,8 @@ const WatchPage = () =>{
     const [currentTrailerIdx,setCurrentTrailerIdx] = useState(0);
     const [loading, setLoading] = useState(true);
     const [content, setContent] = useState({});
-    const [similarContent, setSimilarContent] = useState([]);
+    // const [similarContent, setSimilarContent] = useState([]);
+    const [similarContent, setSimilarContent] = useState();
     const { contentType } =useContentStore();
 
     const sliderRef = useRef(null);
@@ -25,7 +26,7 @@ const WatchPage = () =>{
         const getTrailers = async () => {
             try {
                 const res =await axios.get(`/api/v1/${contentType}/${id}/trailers`);
-                setTrailers(res.data.trailers);
+                setTrailers(res.data.content);
             }
             catch(error){
                 if(error.message.includes("404")){
@@ -108,7 +109,7 @@ const WatchPage = () =>{
             <div className="mx-auto container px-4 py-8 h-full">
                 <Navbar/>
 
-                {trailers.length > 0 && (
+                {trailers?.length > 0 && (
                     <div className="flex justify-between items-center mb-4">
                         <button className={`
                         bg-gray-500/70 hover:bg-gray-500 text-white py-2 px-4 rounded ${
@@ -131,7 +132,7 @@ const WatchPage = () =>{
                 )}
 
                 <div className="aspect-video mb-8 p-2 sm:px-10 md:px-32">
-                    {trailers.length > 0 && (
+                    {trailers?.length > 0 && (
                         <ReactPlayer 
                              controls={true}
                              width={"100%"}
@@ -153,7 +154,7 @@ const WatchPage = () =>{
                         <h2 className="text-5xl font-bold text-balance">{content?.title || content?.name}</h2>
 
                         <p className="mt-2 text-lg">
-                            {formatRelaeseDate(content?.relaese_date || content?.first_air_date)} | {" "}
+                            {formatReleaseDate(content?.relaese_date || content?.first_air_date)} | {" "}
                             {content?.adult? (
                                 <span className="text-red-600">18+</span>
                             ):(
@@ -168,7 +169,7 @@ const WatchPage = () =>{
                         className="max-h-[600px] rounded-md"/>
                 </div>
                 
-                {similarContent.length > 0 && (
+                {similarContent?.length > 0 && (
                     <div className="mt-12 max-w-5xl mx-auto relative">
                         <h3 className="text-3xl font-bold mb-4">SimilarMovies/Tv Shows</h3>
 
