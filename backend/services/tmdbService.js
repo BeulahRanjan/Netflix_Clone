@@ -19,7 +19,7 @@ export const fetchFromTMDB = async (url, retries = 3) => {
     console.log("URL:", url);
     for (let attempt = 1; attempt <= retries; attempt++) {
         try {
-             console.log(ENV_VARS.TMDB_API_KEY);
+            //  console.log(ENV_VARS.TMDB_API_KEY);
             const response = await fetch(url, {
                 headers: {
                     accept: "application/json",
