@@ -15,8 +15,11 @@ import  { ENV_VARS } from '../config/envVars.js';
    //   }
 
 export const fetchFromTMDB = async (url, retries = 3) => {
+      console.log("TMDB KEY EXISTS:", !!ENV_VARS.TMDB_API_KEY);
+    console.log("URL:", url);
     for (let attempt = 1; attempt <= retries; attempt++) {
         try {
+            // console.log(ENV_VARS.TMDB_API_KEY);
             const response = await fetch(url, {
                 headers: {
                     accept: "application/json",

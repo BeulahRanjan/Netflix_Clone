@@ -8,7 +8,8 @@ export async function getTrendingMovies(req, res) {
         res.json({ success:true, content: randomMovies });
     }
     catch(error){
-        console.log("Error in getTrendingMovies controller:", error.message);
+       // console.log("Error in getTrendingMovies controller:", error.message);
+       console.error(error);
         res.status(500).json({ success:false, message: "Internal Server Error" });
     }
 }
@@ -66,7 +67,8 @@ export async function getMoviesByCategory(req,res){
         if(error.message.includes("404")) {
             return res.status(404).send(null);
         }
-        console.log("Error in getMoviesByCategory controller:", error.message);
+        //console.log("Error in getMoviesByCategory controller:", error.message);
+        console.error(error);
         res.status(500).json({ success:false, message:"Internal Server Error" });
     }
 }
