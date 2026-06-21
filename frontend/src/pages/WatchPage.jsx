@@ -69,11 +69,11 @@ const WatchPage = () =>{
      getContentDetails();}, [contentType, id]);
 
      const handleNext = () => {
-        if(currentTrialerIdx < trailers.length-1) setCurrentTrailerIdx(currentTrailerIdx + 1);
+        if(currentTrailerIdx < trailers.length-1) setCurrentTrailerIdx(currentTrailerIdx + 1);
      };
 
      const handlePrev = () => {
-        if(currentTTrailerIdx > 0) setCurrentTrailerIdx(currentTrailerIdx -1);
+        if(currentTrailerIdx > 0) setCurrentTrailerIdx(currentTrailerIdx -1);
      };
 
      const scrollLeft = () => {

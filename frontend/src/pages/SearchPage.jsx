@@ -41,7 +41,7 @@ const SearchPage = () => {
                 <div className="flex justify-center gap-3 mb-4">
                     <button
                         className={`py-2 px-4 rounded ${
-                            aciveTab === "movie" ? "bg-red-600" : "bg-gray-800"
+                            activeTab === "movie" ? "bg-red-600" : "bg-gray-800"
                         } hover:bg-red-700`}
                         onClick={() => handleTabClick("movie")}>
                             Movies
@@ -66,7 +66,7 @@ const SearchPage = () => {
                         type="text"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        placeholder={"Search for a " + ativeTab}
+                        placeholder={"Search for a " + activeTab}
                         className="w-full p-2 rounded bg-gray-800 text-white"/>
                     <button className="bg-red-600 hover:bg-red-700 text-white p-2 rounded">
                         <Search className="size-6"/>
