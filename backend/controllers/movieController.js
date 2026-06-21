@@ -24,6 +24,7 @@ export async function getMovieTrailers(req, res) {
         if(error.message.includes("404")) {
             return res.status(404).send(null);
         }
+         console.error(error);
         res.status(500).json({ success:false, message:"Internal Server Error" });
     }
 }
@@ -38,7 +39,7 @@ export async function getMovieDetails(req, res) {
         if(error.message.includes("404")) {
             return res.status(404).send(null);
         }
-
+         console.error(error);
         res.status(500).json({ success:false, message: "Internal Server Error" });
     }
 }
@@ -53,6 +54,7 @@ export async function getSimilarMovies(req,res){
         if(error.message.includes("404")) {
             return res.status(404).send(null);
         }   
+         console.error(error);
         res.status(500).json({success:false, message:"Intenal Server Error"});
     }
 }
