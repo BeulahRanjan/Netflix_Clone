@@ -1,5 +1,5 @@
   import express from 'express';
-  import { getTrendingMovies,getMovieTrailers,getMovieDetails,getMoviesByCategory,getSimilarMovies} from '../controllers/movieController.js';
+  import { getTrendingMovies,getMovieTrailers,getMovie Details,getMoviesByCategory,getSimilarMovies} from '../controllers/movieController.js';
 
   const router= express.Router();
 
