@@ -10,7 +10,7 @@ import WatchPage from "./pages/WatchPage";
 import Footer from "./components/Footer";
 import SearchPage from "./pages/SearchPage";
 import SearchHistoryPage from "./pages/SearchHistoryPage";
-import NotFoundPage from "./pages/404";
+import NotFoundPage from ". /p ages/404";
 
 function App(){
   const {user, isCheckingAuth, authCheck} = useAuthStore();
