@@ -1,5 +1,5 @@
 import axios from 'axios';
-import  { ENV_VARS } from '../config/envVars.js';
+// import  { ENV_VARS } from '../config/envVars.js';
 
 // export const fetchFromTMDB =async (url) =>{
 //      const options={
@@ -15,7 +15,7 @@ import  { ENV_VARS } from '../config/envVars.js';
    //   }
 
 export const fetchFromTMDB = async (url, retries = 3) => {
-      console.log("TMDB KEY EXISTS:", !!ENV_VARS.TMDB_API_KEY);
+      console.log("TMDB KEY EXISTS:", !!process.env.TMDB_API_KEY);
     console.log("URL:", url);
     for (let attempt = 1; attempt <= retries; attempt++) {
         try {
@@ -23,7 +23,7 @@ export const fetchFromTMDB = async (url, retries = 3) => {
             const response = await fetch(url, {
                 headers: {
                     accept: "application/json",
-                    Authorization: `Bearer ${ENV_VARS.TMDB_API_KEY}`,
+                    Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
                 },
             });
 
