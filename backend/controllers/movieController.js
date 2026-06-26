@@ -1,4 +1,4 @@
-import { fetchFromTMDB } from ". ./s ervices/tmdbService.js";
+import { fetchFromTMDB } from "../services/tmdbService.js";
 
 export async function getTrendingMovies(req, res) {
     try{
