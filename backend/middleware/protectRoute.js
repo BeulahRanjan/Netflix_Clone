@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import {User} from '../models/userModel.js';
-import {ENV_VARS} from '../config/envVars.js';
+// import {ENV_VARS} from '../config/envVars.js';
 
 export const protectRoute =async (res,req, resizeBy, next) =>{
     try{
@@ -8,7 +8,7 @@ export const protectRoute =async (res,req, resizeBy, next) =>{
         if(!token){
             return res.status(401).json({success:false,message:"You need to login first"});
         }
-        const decoded= jwt.verify(token,ENV_VARS.JWT_SECRET);
+        const decoded= jwt.verify(token,process.env.JWT_SECRET);
         if(!decoded){
             return res.status(401).json({success:false,message:"Invalid Token"});
         }
