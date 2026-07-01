@@ -11,6 +11,8 @@ export async function signup(body,res){
 
 
 }
-export async function login{}
+export async function login{
+    
+}
 export async function logout{}
 export async function authCheck{}

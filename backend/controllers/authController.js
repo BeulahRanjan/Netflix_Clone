@@ -1,6 +1,6 @@
 import { User } from "../models/userModel.js";
 import bcrypt from 'bcrypt'
-import { generateTokenAndSetCookie } from "../utils/generateToken.js";
+import { generateTokenAndSetCookie } from ". ./utils /generateToken.js";
 
 export async function signup(req,res,next){
     try{
@@ -58,7 +58,7 @@ export async function signup(req,res,next){
         // console.error('signup error:', error.message);
         // res.status(500).json({success:false, message:'Internal server error'});
         // process.exit(1);
-        next(error);
+        next                                                                                                                                                                                               (error);
     }
 }
 
