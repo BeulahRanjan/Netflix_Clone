@@ -6,7 +6,7 @@ export async function signup(req,res,next){
     try{
          //const {email ,password, username} = req.body;
 
-        // if(!email || !password || !username) {
+         if(!email || !password || !username) {
         //     console.log(email,password, username);
         //     return res.status(400).json({success:false, message:'All fields are required'});
         // }
