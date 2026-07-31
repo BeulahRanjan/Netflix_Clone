@@ -9,7 +9,7 @@ import SignupPage from "./pages/SignupPage";
 import WatchPage from "./pages/WatchPage";
 import Footer from "./components/Footer";
 import SearchPage from "./pages/SearchPage";
-import SearchHistoryPage from ".pages/Search History Page";
+import SearchHistoryPage from ".pages/SearchHistory Page";
 import NotFoundPage from "./pages/404";
 
 function App(){
