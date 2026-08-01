@@ -1,51 +1,44 @@
 import { User } from "../models/userModel.js";
- import bcrypt from 'bcrypt'
+ import bcrypt from 'bcrypt' 
 import { generateTokenAndSetCookie } from "../utils/generateToken.js";
 
 export async function signup(req,res,next){
     try{
-         const {email ,password, username} = req.body;
+        //  const {email ,password, username} = req.body;
 
-         if(!email || !password || !username) {
-            console.log(email,password, username);
-            return res.status(400).json({success:false, message:'All fields are required'});
-        }
+        //  if(!email || !password || !username) {
+        //     console.log(email,password, username);
+        //     return res.status(400).json({success:false, message:'All fields are required'});
+        // }
 
-        const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if(!emailRegex.test(email)) {
-            return res.status(400).json({succcess:false, message:'Invalid email address'});
-        }
+        // const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        // if(!emailRegex.test(email)) {
+        //     return res.status(400).json({succcess:false, message:'Invalid email address'});
+        // }
 
-        if(password.length < 6) {
-            return res.status(400).json({success:false, message:'Password must be atleast 6 characters'});
-        }
+        // if(password.length < 6) {
+        //     return res.status(400).json({success:false, message:'Password must be atleast 6 characters'});
+        // }
 
-        const existingUserByEmail = await User.findOne({email:email});
-        if(existingUserByEmail) {
-            return res.status(400).json({success:false, message:'Email already exists'});
-        }
+        // const existingUserByEmail = await User.findOne({email:email});
+        // if(existingUserByEmail) {
+        //     return res.status(400).json({success:false, message:'Email already exists'});
+        // }
 
-        const existingUserByUsername = await User.findOne({username:username});
-        if(existingUserByUsername) {
-            return res.status(400).json({success:false, message:'Username already exists'});
-        }
+        // const existingUserByUsername = await User.findOne({username:username});
+        // if(existingUserByUsername) {
+        //     return res.status(400).json({success:false, message:'Username already exists'});
+        // }
 
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);;
+        // const salt = await bcrypt.genSalt(10);
+        // const hashedPassword = await bcrypt.hash(password, salt);;
 
-        const Profile_pice=["/avatar1.png","/avatar2.png","/avatar3.png"];
-        const image=Profile_pice[Math.floor(Math.random()*Profile_pice.length)];
+        // const Profile_pice=["/avatar1.png","/avatar2.png","/avatar3.png"];
+        // const image=Profile_pice[Math.floor(Math.random()*Profile_pice.length)];
 
-        const newUser = new User({
-            email,
-            password:hashedPassword,
-            username,
-            image
-        });
-        generateTokenAndSetCookie(newUser._id,res);
-        await newUser.save();
+      
 
-        const user= await authService.signup(req.body, res);
+        const user= await authService.signup(req.body,res);
         res.status(201).json({
             success:true,
             user:{
@@ -64,22 +57,22 @@ export async function signup(req,res,next){
 
 export async function login(req,res){
     try{
-        const {email, password} = req.body;
+        // const {email, password} = req.body;
 
-        if(!email || !password) {
-            return res.status(400).json({success:false, message:'All fields are required'});
-        }
-        const user = await User.findOne({email:email});
-        if(!user) {
-            return res.status(400).json({success:false, message:'Invalid credentials'});
-        }
+        // if(!email || !password) {
+        //     return res.status(400).json({success:false, message:'All fields are required'});
+        // }
+        // const user = await User.findOne({email:email});
+        // if(!user) {
+        //     return res.status(400).json({success:false, message:'Invalid credentials'});
+        // }
 
-        const isPassword = await bcrypt.compare(password, user.password);
-        if(!isPassword) {
-            return res.status(400).json({success:false, message:'Invalid credentials'});
-        }
+        // const isPassword = await bcrypt.compare(password, user.password);
+        // if(!isPassword) {
+        //     return res.status(400).json({success:false, message:'Invalid credentials'});
+        // }
 
-        generateTokenAndSetCookie(user._id,res);
+        // generateTokenAndSetCookie(user._id,res);
 
         const user = await authService.login(req.body,res);
         res.status(200).json({
@@ -101,7 +94,7 @@ export async function login(req,res){
 
 export async function logout(req,res){
     try{
-        res.clearCookie('jwt-netflix');
+        // res.clearCookie('jwt-netflix');
 
         await authService.logout(res);
         res.status(200).json({success:true, message:'Logged out successfully'});
