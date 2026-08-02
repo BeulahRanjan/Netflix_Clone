@@ -1,11 +1,13 @@
 import { fetchFromTMDB } from "../services/tmdbService.js";
+import * as movieService from "../services/movieService.js";
 
 export async function getTrendingMovies(req, res) {
     try{
-        const data = await fetchFromTMDB("https://api.themoviedb.org/3/trending/movie/day?language=en-US");
-        const randomMovies = data.results[Math.floor(Math.random() * data.results?.length)];
+        // const data = await fetchFromTMDB("https://api.themoviedb.org/3/trending/movie/day?language=en-US");
+        // const randomMovies = data.results[Math.floor(Math.random() * data.results?.length)];
 
-        res.json({ success:true, content: randomMovies });
+        const data = await movieService.getTrendingMovies();
+        res.json({ success:true, content: data });
     }
     catch(error){
        // console.log("Error in getTrendingMovies controller:", error.message);
@@ -15,9 +17,10 @@ export async function getTrendingMovies(req, res) {
 }
 
 export async function getMovieTrailers(req, res) {
-    const { id } = req.params;
+    // const { id } = req.params;
     try{
-        const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`);
+        // const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`);
+        const data= await movieService.getMovieTrailers(req);
         res.json({ success:true, content: data.results });
     }
     catch(error){
@@ -30,9 +33,10 @@ export async function getMovieTrailers(req, res) {
 }
 
 export async function getMovieDetails(req, res) {
-    const { id } = req.params;
+    // const { id } = req.params;
     try{
-        const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}?language=en-US`);
+        // const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}?language=en-US`);
+        const data= await movieService.getMovieDetails(req);
         res.status(200).json({ success:true, content:data});
     }
     catch(error){
@@ -45,9 +49,10 @@ export async function getMovieDetails(req, res) {
 }
 
 export async function getSimilarMovies(req,res){
-    const { id } = req.params;
+    // const { id } = req.params;
     try{
-        const data = await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}/similar?language=en-US`); 
+        //  const data = await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}/similar?language=en-US`); 
+        const data = await movieService.getSimilarMovies(req);
         res.status(200).json({ success:true, content:data.results });
     }
     catch(error){

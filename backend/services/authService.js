@@ -1,3 +1,5 @@
+import authRepositary from "../repositaries/authRepositary.js";
+
 export async function signup(body,res){
      const {email ,password, username} = body;
 
