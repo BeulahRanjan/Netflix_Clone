@@ -5,23 +5,24 @@ import searchService from '../services/searchService.js';
 export async function searchPerson(req, res) {
     // const { query } = req.params;
     try{
-        const response = await fetchFromTMDB(`https://api.themoviedb.org/3/search/person?query=${query}&include_adult=false&language=en-US&page=1`);
+    //     const response = await fetchFromTMDB(`https://api.themoviedb.org/3/search/person?query=${query}&include_adult=false&language=en-US&page=1`);
 
-        if(response.results.length === 0) {
-            return res.status(404).send(null);          
-    }
+    //     if(response.results.length === 0) {
+    //         return res.status(404).send(null);          
+    // }
 
-    await User.findByIdAndUpdate(req.user._id, {
-        $push:{
-            searchHistory: {
-                id:response.results[0].id,
-                image:response.results[0].profile_path,
-                title:response.results[0].name,
-                searchType:"person",
-                createdAt: new Date(),
-            },
-        },
-    });
+    // await User.findByIdAndUpdate(req.user._id, {
+    //     $push:{
+    //         searchHistory: {
+    //             id:response.results[0].id,
+    //             image:response.results[0].profile_path,
+    //             title:response.results[0].name,
+    //             searchType:"person",
+    //             createdAt: new Date(),
+    //         },
+    //     },
+    // });
+    const response = await searchService.searchPerson(req);
     res.status(200).json({success:true, content:response.results});
 } catch(error){
     console.log("Error in searchPerson controller:", error.message);
@@ -30,25 +31,26 @@ export async function searchPerson(req, res) {
 }
 
 export async function searchMovie(req,res){
-    const {query} = req.params;
+    // const {query} = req.params;
 
     try{
-        const response = await fetchFromTMDB(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`);
-        if(response.results.length === 0) {
-            return res.status(404).send(null);          
-    }
+    //     const response = await fetchFromTMDB(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`);
+    //     if(response.results.length === 0) {
+    //         return res.status(404).send(null);          
+    // }
 
-    await User.findByIdAndUpdate(req.user._id, {
-        $push:{
-            searchHistory:{
-                id: response.results[0].id,
-                image: response.results[0].poster_path,
-                title: response.results[0].title,
-                searchType:"movie",
-                createdAt: new Date(),
-            },
-        },
-    });
+    // await User.findByIdAndUpdate(req.user._id, {
+    //     $push:{
+    //         searchHistory:{
+    //             id: response.results[0].id,
+    //             image: response.results[0].poster_path,
+    //             title: response.results[0].title,
+    //             searchType:"movie",
+    //             createdAt: new Date(),
+    //         },
+    //     },
+    // });
+    const response= await searchService.searchMovie(req);
     res.status(200).json({ success:true, content:response.results});
 }
 catch(error){
@@ -58,21 +60,22 @@ catch(error){
 }
 
 export async function searchTv (req, res){
-    const {query} = req.params;
+    // const {query} = req.params;
 try{
-    const response = await fetchFromTMDB(`https://api.themoviedb.org/3/search/tv?query=${query}&include_adult=false&language=en-US&page=1`);
+    // const response = await fetchFromTMDB(`https://api.themoviedb.org/3/search/tv?query=${query}&include_adult=false&language=en-US&page=1`);
 
-    await User.findByIdAndUpdate(req.user._id,{
-        $push:{
-            searchHistory:{
-                id: response.results[0].id,
-                image: response.results[0].poster_path,
-                title: response.results[0].name,
-                searchType:"tv",
-                createdAt: new Date(),  
-            },
-        },
-    });
+    // await User.findByIdAndUpdate(req.user._id,{
+    //     $push:{
+    //         searchHistory:{
+    //             id: response.results[0].id,
+    //             image: response.results[0].poster_path,
+    //             title: response.results[0].name,
+    //             searchType:"tv",
+    //             createdAt: new Date(),  
+    //         },
+    //     },
+    // });
+    const response = await searchService.searchTv(req);
     res.json({success:true, content:response.results});
 }
 catch(error){
@@ -84,7 +87,10 @@ catch(error){
 
 export async function getSearchHistory(req,res){
     try{
-        res.status(200).json({success:true, content:req.user.searchHistory});
+        const response = await searchService.getSearchHistory(req);
+        // res.status(200).json({success:true, content:req.user.searchHistory});
+        res.status(200).json({success:true, content:response});
+
     } 
     catch(error){
         console.log("Error in getSearchHistory controller:", error.message);
@@ -93,15 +99,16 @@ export async function getSearchHistory(req,res){
 }
 
 export async function removeItemFromSearchHistory(req,res){
-    let { id } = req.params;
+    // let { id } = req.params;
 
-    id = parseInt(id);
+    // id = parseInt(id);
     try{
-        await User.findByIdAndUpdate(req.user._id, {
-            $pull:{
-                searchHistory: { id:id },
-            },
-        });
+        const response = await searchService.removeItemFromSearchHistory(req);
+        // await User.findByIdAndUpdate(req.user._id, {
+        //     $pull:{
+        //         searchHistory: { id:id },
+        //     },
+        // });
         res.status(200).json({ success:true, message:"Item removed from search history"});
     }   
     catch(error){
