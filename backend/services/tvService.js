@@ -9,15 +9,17 @@ export async function getTVTrailers(req){
      return await tvRepositary.getTVTrailers(id);
 }
 
-export async function getTVDetails(){
+export async function getTVDetails(req){
     const { id } =req.params;
     return await tvRepositary.getTVDetails(id);
 }
 
-export async function getSimilarTV(){
-
+export async function getSimilarTV(req){
+    const { id } = req. params;
+    return await tvRepositary.getSimilarTV(id);
 }
 
 export async function getTVByCategory(){
-
+    const { category } = req.params;
+    return await tvRepositary.getTVByCategory(category);
 }

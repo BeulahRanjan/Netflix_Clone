@@ -46,10 +46,11 @@ export async function getTVDetails(req, res) {
 }
 
 export async function getSimilarTV(req,res){
-    const { id } = req. params;
+    // const { id } = req. params;
     try{
-         const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/series_id/similar?language=en-US&page=1`);
-         res.json({success:true, content:data.results});
+        //  const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/similar?language=en-US&page=1`);
+        const data= await tvService.getSimilarTV(req);
+        res.json({success:true, content:data.results});
     }
     catch(error){
         
@@ -59,9 +60,10 @@ export async function getSimilarTV(req,res){
 
 
 export async function getTVByCategory(req,res){
-    const { category } = req.params;
+    // const { category } = req.params;
     try{
-        const data =  await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${category}?language=en-US&page=1`);
+        // const data =  await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${category}?language=en-US&page=1`);
+        const data= await tvService.getTVByCategory(req);
         res.json({ success:true, content:data.results});
     }
     catch(error){
