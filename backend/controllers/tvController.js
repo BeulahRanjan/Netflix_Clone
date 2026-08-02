@@ -3,10 +3,11 @@ import tvService from "../services/tvService.js";
 
 export async function getTrendingTV(req, res) {
     try{
-        const data = await fetchFromTMDB("https://api.themoviedb.org/3/trending/tv/day?language=en-US");
-        const randomTVShow = data.results[Math.floor(Math.random() * data.results?.length)];
+        // const data = await fetchFromTMDB("https://api.themoviedb.org/3/trending/tv/day?language=en-US");
+        // const randomTVShow = data.results[Math.floor(Math.random() * data.results?.length)];
 
-        res.json({ success:true, content: randomTVShow });
+        const data= await tvService.getTrendingTV();
+        res.json({ success:true, content: data });
     }
     catch(error){
         console.log("Error in getTrendingTV controller:", error.message);
@@ -15,9 +16,10 @@ export async function getTrendingTV(req, res) {
 }
 
 export async function getTVTrailers(req, res) {
-    const { id } = req.params;
+    // const { id } = req.params;
    try{
-    const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/videos?language=en-US`);
+    // const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/videos?language=en-US`);
+    const data= await tvService.getTVTrailers(req);
     res.json({ success:true, content:data.results});
    }
    catch(error){
@@ -29,9 +31,10 @@ export async function getTVTrailers(req, res) {
 }
 
 export async function getTVDetails(req, res) {
-    const { id } =req.params;
+    // const { id } =req.params;
     try{
-        const data= await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}?language=en-US`);
+        // const data= await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}?language=en-US`);
+        const data= await tvService.getTVDetails(req);
         res.json({ success:true, content:data.results});
     } 
     catch(error){

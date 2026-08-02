@@ -1,13 +1,18 @@
 export async function getTrendingTV(){
+ const data = await fetchFromTMDB("https://api.themoviedb.org/3/trending/tv/day?language=en-US");
+const randomTVShow = data.results[Math.floor(Math.random() * data.results?.length)];
+return randomTVShow;
 
 }
 
-export async function getTVTrailers(){
-
+export async function getTVTrailers(id){
+    const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/videos?language=en-US`);
+    return data;
 }
 
-export async function getTVDetails(){
-
+export async function getTVDetails(id){
+    const data= await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}?language=en-US`);
+    return data;
 }
 
 export async function getSimilarTV(){
