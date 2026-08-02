@@ -15,3 +15,7 @@ export async function getMovieDetails(req){
 export async function getSimilarMovies(req){
     return await movieRepository.getSimilarMovies(req);
 }
+
+export async function getMoviesByCategory(req){
+    return await movieRepository.getMoviesByCategory(req);
+}
