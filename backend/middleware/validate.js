@@ -1,4 +1,4 @@
-import { validation Result } from 'express-validator';
+import { validationResult } from 'express-validator';
 
 export const validate= async (req,res,next) =>{
     const errors = validationResult(req);
