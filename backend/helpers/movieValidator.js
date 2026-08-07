@@ -1,4 +1,5 @@
 import {body} from 'express-validator';
+import { NOW_PLAYING, TOP_RATED, POPULAR, UPCOMING } from '../utils/constants.js';
 
 export const trailerValidator=[
     body('id')
@@ -18,3 +19,14 @@ export const similarValidator=[
     .isInt().withMessage('Movie ID must be an integer')
 ]
 
+export const categoryValidator=[
+    body('category')
+    .notEmpty().withMessage('Category is required') 
+    .isString().withMessage('Category must be a string')
+    .custom((value) =>{
+        if(value == NOW_PLAYING || value == TOP_RATED || value == POPULAR || value == UPCOMING){
+            return true;
+        }
+        throw new Error('Invalid category');
+    })
+]
