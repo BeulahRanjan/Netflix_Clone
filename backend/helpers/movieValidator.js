@@ -12,3 +12,9 @@ export const detailsValidator=[
     .isInt().withMessage('Movie ID must be an integer')
 ]
 
+export const similarValidator=[
+    body('id')
+    .notEmpty().withMessage('Movie ID is required') 
+    .isInt().withMessage('Movie ID must be an integer')
+]
+
