@@ -6,10 +6,10 @@
   const router= express.Router();
 
   router.get('/trending', getTrendingMovies);
-  router.get('/:id/trailers', validate(trailerValidator), validate, getMovieTrailers);
-  router.get('/:id/details', validate(detailsValidator), validate, getMovieDetails);
-  router.get('/:id/similar', validate(similarValidator), validate, getSimilarMovies);
-  router.get('/:category', validate(categoryValidator), validate, getMoviesByCategory); 
+  router.get('/:id/trailers', trailerValidator, validate, getMovieTrailers);
+  router.get('/:id/details', detailsValidator, validate, getMovieDetails);
+  router.get('/:id/similar', similarValidator, validate, getSimilarMovies);
+  router.get('/:category', categoryValidator, validate, getMoviesByCategory); 
 
   export default router;
  
