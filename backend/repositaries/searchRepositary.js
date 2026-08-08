@@ -73,3 +73,7 @@ export async function removeItemFromSearchHistory(userId, id){
     });
     
 }
+
+
+
+

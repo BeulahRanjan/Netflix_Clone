@@ -23,3 +23,10 @@ export const searchTvValidator=[
     .isString().withMessage('Query must be a string')
     .isLength({min:3}).withMessage('Query must be at least 3 characters long')
 ]
+
+export const removeItemFromSearchHistoryValidator=[
+    check('id')
+    .notEmpty().withMessage('Id is required')
+    .isInt().withMessage('Id must be an integer')
+    
+]
