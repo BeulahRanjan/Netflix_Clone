@@ -11,4 +11,4 @@ import { getSearchHistory,removeItemFromSearchHistory,
  router.get("/history", getSearchHistory);
  router.delete("/history/:id", removeItemFromSearchHistory);
 
- export default router;
+ export default router; 
