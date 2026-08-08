@@ -1,6 +1,6 @@
 import {body} from 'express-validator';
 import { NOW_PLAYING, TOP_RATED, POPULAR, UPCOMING } from '../utils/constants.js';
-
+ 
 export const trailerValidator=[
     body('id')
     .notEmpty().withMessage('Movie ID is required') 

@@ -1,12 +1,12 @@
-import {body} from 'express-validator';
+import {body, check} from 'express-validator';
 
 export const signupValidator = [
-    body('username')
+    check('username') 
     .trim()
     .notEmpty().withMessage('Username is required')
     .isLength({min:2, max:100}).withMessage('Username must be between 2 and 100 characters long'),
 
-    body('email')
+    check('email')
     .trim()
     .notEmpty().withMessage('Email is required')
     .isEmail().withMessage('Please provide a valid email')
@@ -14,7 +14,7 @@ export const signupValidator = [
     .isEmail().normalizeEmail(),
 
 
-    body('password')
+    check('password')
     .trim()
     .notEmpty().withMessage('Password is required')
     .isLength({min:6}).withMessage('Password must be at least 6 characters long')
@@ -26,14 +26,14 @@ export const signupValidator = [
 
 export const loginValidator = [
 
-    body('email')
+    check('email')
     .trim()
     .notEmpty().withMessage('Email is required')
     .isEmail().withMessage('Please provide a valid email')
     .isEmail().normalizeEmail(),
 
 
-    body('password')
+    check('password')
     .trim()
     .notEmpty().withMessage('Password is required')
 ]
