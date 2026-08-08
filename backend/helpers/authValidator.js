@@ -1,4 +1,4 @@
-import {body, check} from 'express-validator';
+import {check} from 'express-validator';
 
 export const signupValidator = [
     check('username') 

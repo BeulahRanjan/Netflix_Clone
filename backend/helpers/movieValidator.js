@@ -1,4 +1,4 @@
-import {body} from 'express-validator';
+import {check} from 'express-validator';
 import { NOW_PLAYING, TOP_RATED, POPULAR, UPCOMING } from '../utils/constants.js';
  
 export const trailerValidator=[
