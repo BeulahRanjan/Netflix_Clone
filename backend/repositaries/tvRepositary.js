@@ -23,4 +23,4 @@ export async function getSimilarTV(id){
 export async function getTVByCategory(category){
     const data =  await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${category}?language=en-US&page=1`);
     return data;
-}
+} 

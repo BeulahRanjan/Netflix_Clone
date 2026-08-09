@@ -9,4 +9,4 @@ router.get('/:id/details', getTVDetails);
 router.get('/:id/similar', getSimilarTV);
 router.get('/:category', getTVByCategory );
 
-export default router;
+export default router; 
