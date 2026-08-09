@@ -5,7 +5,7 @@ import { trailerValidator,detailsValidator,similarValidator,categoryValidator } 
 const router = express.Router();
 
 router.get('/trending', getTrendingTV);
-router.get('/:id/trailers', getTVTrailers);
+router.get('/:id/trailers',trailerValidator,validate, getTVTrailers);
 router.get('/:id/details', getTVDetails);
 router.get('/:id/similar', getSimilarTV);
 router.get('/:category', getTVByCategory );
