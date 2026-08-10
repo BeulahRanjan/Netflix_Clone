@@ -43,9 +43,11 @@ const WatchPage = () =>{
         const getSimilarContent =async () =>{
             try{
                 const res = await axios.get(`/api/v1/${contentType}/${id}/similar`);
-                setSimilarContent(res.data.similar);
+                console.log("SIMILAR RESPONSE:", res.data);
+                setSimilarContent(res.data.content);
             }
             catch(error){
+                console.log("SIMILAR ERROR:", error.response?.data || error.message);
                 if(error.message.includes("404")) {
                     setSimilarContent([]);
                 }
@@ -117,8 +119,9 @@ const WatchPage = () =>{
                         bg-gray-500/70 hover:bg-gray-500 text-white py-2 px-4 rounded ${
                             currentTrailerIdx === 0 ? "opacity-50 cursor-not-allowed":""}
                         }`}
-                        disabled={currentTrailerIdx === trailers.length -1}
-                        onClick={handleNext}>
+                        // disabled={currentTrailerIdx === trailers.length -1}
+                        disabled={currentTrailerIdx === 0}
+                        onClick={handlePrev}>
                             <ChevronLeft size={24}/>
                         </button>
 
@@ -140,7 +143,7 @@ const WatchPage = () =>{
                              width={"100%"}
                              height={"70vh"}
                              className="mx-auto overflow-hidden rounded-lg"
-                             url={`https://www.youtube.com/watch?v=${trailers[currentTrailerIdx].key}`}/>
+                             src={`https://www.youtube.com/watch?v=${trailers[currentTrailerIdx].key}`}/>
                     )}
 
                     {trailers?.length === 0 && (
