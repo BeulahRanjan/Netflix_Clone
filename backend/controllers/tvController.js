@@ -12,7 +12,7 @@ export async function getTrendingTV(req, res) {
         // const data = await fetchFromTMDB("https://api.themoviedb.org/3/trending/tv/day?language=en-US");
         // const randomTVShow = data.results[Math.floor(Math.random() * data.results?.length)];
 
-        const data= await tvService.getTrendingTV();
+        const data= await ServiceTrendingTV();
         res.json({ success:true, content: data });
     }
     catch(error){
@@ -29,6 +29,7 @@ export async function getTVTrailers(req, res) {
     res.json({ success:true, content:data.results});
    }
    catch(error){
+    console.error("Error in getTVTrailers controller:", error.message);
     if(error.message.includes(404)){
         return res.status(404).send(null);
     }

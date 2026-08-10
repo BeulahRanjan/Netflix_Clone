@@ -19,21 +19,30 @@ export const fetchFromTMDB = async (url, retries = 3) => {
     console.log("URL:", url);
     for (let attempt = 1; attempt <= retries; attempt++) {
         try {
-            //  console.log(ENV_VARS.TMDB_API_KEY);
-            const response = await fetch(url, {
-                headers: {
-                    accept: "application/json",
-                    Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
-                },
-            });
+            const response = await fetch(
+                // url, {
+                `${url}&api_key=${process.env.TMDB_API_KEY}`
+                
+                // headers: {
+                //     accept: "application/json",
+                //     Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
+                // },
+            // }
+        );
 
             if (!response.ok) {
                 throw new Error(`TMDB Error ${response.status}`);
+
             }
 
             return await response.json();
-        } catch (err) {
-            if (attempt === retries) throw err;
+        } catch (error) {
+
+            console.error(
+                `TMDB attempt ${attempt} failed:`, error.response?.status,
+            error.response?.data || error.message);
+            if (attempt === retries) throw error;
+
 
             await new Promise(resolve => setTimeout(resolve, 500));
         }

@@ -92,7 +92,7 @@ export async function login(req,res){
         });
     }
     catch(error){
-        next(error);
+        // next(error);
 
         console.error('login error:', error.message);
         res.status(500).json({success:false, message:'Internal server error'});

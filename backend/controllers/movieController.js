@@ -1,4 +1,4 @@
-import { fetchFromTMDB } from "../services/tmdbService.js";
+
 import {
     getTrendingMovies as ServiceTrendingMovies,
     getMovieTrailers as ServiceMovieTrailers,
