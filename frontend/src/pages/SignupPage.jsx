@@ -42,7 +42,7 @@
                         placeholder='johndoe'
                         id='username'
                         value={username}
-                        onChange={(e) =>setUserName(e.target.value)}
+                        onChange={(e) =>setUsername(e.target.value)}
                         />
 
                         <label htmlFor='password' className='text-sm font-medium text-gray-300 block'>Password</label>
