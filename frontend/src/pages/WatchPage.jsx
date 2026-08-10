@@ -17,7 +17,7 @@ const WatchPage = () =>{
     const [loading, setLoading] = useState(true);
     const [content, setContent] = useState({});
     // const [similarContent, setSimilarContent] = useState([]);
-    const [similarContent, setSimilarContent] = useState();
+    const [similarContent, setSimilarContent] = useState([]);
     const { contentType } =useContentStore();
 
     const sliderRef = useRef(null);
