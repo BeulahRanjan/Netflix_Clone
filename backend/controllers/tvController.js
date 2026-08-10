@@ -1,5 +1,11 @@
 import { fetchFromTMDB } from "../services/tmdbService.js";
-import tvService from "../services/tvService.js";
+import {
+    getTrendingTV as ServiceTrendingTV,
+    getTVTrailers as ServiceTVTrailers,
+    getTVDetails as ServiceTVDetails,
+    getSimilarTV as ServiceSimilarTV,
+    getTVByCategory as ServiceTVByCategory
+} from "../services/tvService.js"
 
 export async function getTrendingTV(req, res) {
     try{

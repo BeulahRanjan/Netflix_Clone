@@ -1,7 +1,7 @@
   import express from 'express';
   import { getTrendingMovies,getMovieTrailers,getMovieDetails,getMoviesByCategory,getSimilarMovies} from '../controllers/movieController.js';
   import { trailerValidator,detailsValidator,similarValidator,categoryValidator } from '../helpers/movieValidator.js';
-  import { validate } from '../middlewares/validate.js';
+  import { validate } from '../middleware/validate.js';
 
   const router= express.Router();
 

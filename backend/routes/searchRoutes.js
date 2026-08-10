@@ -4,6 +4,7 @@ import { getSearchHistory,removeItemFromSearchHistory,
  } from '../controllers/searchController.js';
  import { searchPersonValidator, searchMovieValidator,searchTvValidator,removeItemFromSearchHistoryValidator } from '../helpers/searchValidator.js';
 
+import { validate } from '../middleware/validate.js';
  const router = express.Router();
 
  router.get("/person/:query",searchPersonValidator, validate, searchPerson);

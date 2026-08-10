@@ -11,6 +11,9 @@ import searchRoutes from "./routes/searchRoutes.js";
  import cookieParser from 'cookie-parser';
  import { protectRoute } from "./middleware/protectRoute.js";
  import path, { dirname } from 'path';
+ import dotenv from "dotenv";
+
+dotenv.config();
 
  const app= express();
 const PORT = process.env.PORT || 5000;

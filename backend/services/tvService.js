@@ -1,25 +1,31 @@
-import tvRepositary from "../repositaries/tvRepositary.js";
+import {
+    getTrendingTV as RepositaryTrendingTV,
+    getTVTrailers as RepositaryTVTrailers,
+    getTVDetails as RepositaryTVDetails,
+    getSimilarTV as RepositarySimilarTV,
+    getTVByCategory as RepositaryTVByCategory
+} from "../repositaries/tvRepositary.js";
 
 export async function getTrendingTV(){
-    return await tvRepositary.getTrendingTV();
+    return await RepositaryTrendingTV();
 }
 
 export async function getTVTrailers(req){
      const { id } = req.params;
-     return await tvRepositary.getTVTrailers(id);
+     return await RepositaryTVTrailers(id);
 }
 
 export async function getTVDetails(req){
     const { id } =req.params;
-    return await tvRepositary.getTVDetails(id);
+    return await RepositaryTVDetails(id);
 }
 
 export async function getSimilarTV(req){
     const { id } = req. params;
-    return await tvRepositary.getSimilarTV(id);
+    return await RepositarySimilarTV(id);
 }
 
 export async function getTVByCategory(){
     const { category } = req.params;
-    return await tvRepositary.getTVByCategory(category);
+    return await RepositaryTVByCategory(category);
 }

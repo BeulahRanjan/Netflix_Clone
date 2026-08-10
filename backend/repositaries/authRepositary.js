@@ -1,9 +1,9 @@
-import User from "../models/userModel.js";
+import { User } from "../models/userModel.js";
 import bcrypt from 'bcrypt';
 import { generateTokenAndSetCookie } from "../utils/generateToken.js";
 
-export function signup(user,res) {
-        const {email ,password, username} = req.body;
+export async function signup(data,res) {
+        const {email ,password, username} = data;
 
          if(!email || !password || !username) {
             console.log(email,password, username);
@@ -47,8 +47,8 @@ export function signup(user,res) {
         return newUser;
 }
 
-export function login(user, res) {
-    const {email, password} = req.body;
+export async function login(data, res) {
+    const {email, password} = data;
 
         if(!email || !password) {
             return res.status(400).json({success:false, message:'All fields are required'});

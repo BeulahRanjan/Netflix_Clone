@@ -1,4 +1,10 @@
-import authRepositary from "../repositaries/authRepositary.js";
+// import authRepositary from "../repositaries/authRepositary.js";
+import {
+    signup as repositorySignup,
+    login as repositoryLogin,
+    logout as repositoryLogout,
+    authCheck as repositoryAuthCheck
+} from "../repositaries/authRepositary.js";
 
 export async function signup(body,res){
      const {email ,password, username} = body;
@@ -9,7 +15,7 @@ export async function signup(body,res){
         username
      }
 
-     return await authRepositary.signup(data,res);
+     return await repositorySignup(data, res);
 
 
 }
@@ -22,11 +28,11 @@ export async function login(body, res){
     password
    }
 
-   return await authRepositary.login(data, res);
+   return await repositoryLogin(data, res);
 }
 export async function logout(res){
-      return await authRepositary.logout(res);
+      return await repositoryLogout(res);
 }
 export async function authCheck(user){
-   return await authRepositary.authCheck(user);
+   return await repositoryAuthCheck(user);
 } 

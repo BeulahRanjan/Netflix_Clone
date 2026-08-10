@@ -1,6 +1,12 @@
 import { User } from '../models/userModel.js';
 import { fetchFromTMDB } from '../services/tmdbService.js';
-import searchService from '../services/searchService.js';
+import {
+    searchPerson as ServicesearchPerson,
+    searchMovie as ServicesearchMovie,
+    searchTv as ServicesearchTv,
+    getSearchHistory as ServicesearchHistory,
+    removeItemFromSearchHistory as ServiceremoveItemFromSearchHistory
+} from "../services/searchService.js";
 
 export async function searchPerson(req, res) {
     // const { query } = req.params;
@@ -22,7 +28,7 @@ export async function searchPerson(req, res) {
     //         },
     //     },
     // });
-    const response = await searchService.searchPerson(req);
+    const response = await ServicesearchPerson(req);
     res.status(200).json({success:true, content:response.results});
 } catch(error){
     console.log("Error in searchPerson controller:", error.message);
@@ -50,7 +56,7 @@ export async function searchMovie(req,res){
     //         },
     //     },
     // });
-    const response= await searchService.searchMovie(req);
+    const response= await ServicesearchMovie(req);
     res.status(200).json({ success:true, content:response.results});
 }
 catch(error){
@@ -75,7 +81,7 @@ try{
     //         },
     //     },
     // });
-    const response = await searchService.searchTv(req);
+    const response = await ServicesearchTv(req);
     res.json({success:true, content:response.results});
 }
 catch(error){
@@ -87,7 +93,7 @@ catch(error){
 
 export async function getSearchHistory(req,res){
     try{
-        const response = await searchService.getSearchHistory(req);
+        const response = await ServicesearchHistory(req);
         // res.status(200).json({success:true, content:req.user.searchHistory});
         res.status(200).json({success:true, content:response});
 
@@ -103,7 +109,7 @@ export async function removeItemFromSearchHistory(req,res){
 
     // id = parseInt(id);
     try{
-        const response = await searchService.removeItemFromSearchHistory(req);
+        const response = await ServiceremoveItemFromSearchHistory(req);
         // await User.findByIdAndUpdate(req.user._id, {
         //     $pull:{
         //         searchHistory: { id:id },

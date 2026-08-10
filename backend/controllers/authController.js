@@ -1,7 +1,13 @@
 import { User } from "../models/userModel.js";
  import bcrypt from 'bcrypt' 
 import { generateTokenAndSetCookie } from "../utils/generateToken.js";
-import authService from "../services/authService.js";
+//import authService from "../services/authService.js";
+import {
+    signup as ServiceSignup,
+    login as ServiceLogin,
+    logout as ServiceLogout,
+    authCheck as ServiceAuthCheck
+} from "../services/authService.js";
 
 export async function signup(req,res,next){
     try{
@@ -39,11 +45,11 @@ export async function signup(req,res,next){
 
       
 
-        const user= await authService.signup(req.body,res);
+        const user= await ServiceSignup(req.body,res);
         res.status(201).json({
             success:true,
             user:{
-                ...newUser._doc,
+                ...user._doc,
                 password:"",
             }
         });
@@ -75,7 +81,7 @@ export async function login(req,res){
 
         // generateTokenAndSetCookie(user._id,res);
 
-        const user = await authService.login(req.body,res);
+        const user = await ServiceLogin(req.body,res);
         res.status(200).json({
             success:true,
             user
@@ -97,7 +103,7 @@ export async function logout(req,res){
     try{
         // res.clearCookie('jwt-netflix');
 
-        await authService.logout(res);
+        await ServiceLogout(res);
         res.status(200).json({success:true, message:'Logged out successfully'});
     }
     catch(error){
@@ -110,7 +116,7 @@ export async function logout(req,res){
 
 export async function authCheck(req,res){
     try{
-        const user= await authService.authCheck(req.user);
+        const user= await ServiceAuthCheck(req.user);
         res.status(200).json({success:true, user});
     }
     catch(error){

@@ -8,7 +8,7 @@ return randomTVShow;
 export async function getTVTrailers(id){
     const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/videos?language=en-US`);
     return data;
-}
+} 
 
 export async function getTVDetails(id){
     const data= await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}?language=en-US`);
