@@ -4,7 +4,7 @@ import {
     getTVDetails as RepositaryTVDetails,
     getSimilarTV as RepositarySimilarTV,
     getTVByCategory as RepositaryTVByCategory
-} from " . ./repositaries/tvRepositary.js";
+} from " ../ repositaries/tvRepositary.js";
 
 export async function getTrendingTV(){
     return await RepositaryTrendingTV();
