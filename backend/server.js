@@ -9,7 +9,7 @@ import searchRoutes from "./routes/searchRoutes.js";
 // import { ENV_VARS } from "./config/envVars.js";
  import { connectDB } from "./config/db.js";
  import cookieParser from 'cookie-parser';
- import { protectRoute } from "./middleware/ protectRoute. js";
+ import { protectRoute } from "./middleware/protectRoute. js";
  import path, { dirname } from 'path';
  import dotenv from "dotenv";
 
