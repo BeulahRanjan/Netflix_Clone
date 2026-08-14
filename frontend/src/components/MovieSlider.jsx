@@ -24,11 +24,11 @@ const MovieSlider =({category})=>{
             console.log("URL:", `/api/v1/${contentType}/${category}`);
             console.log("SLIDER RESPONSE:", res.data);
             console.log("SLIDER CONTENT:", res.data.content);
-            console.log(
-                "IS ARRAY:",
-                Array.isArray(res.data.content)
-            );
-            console.log("================================");
+            // console.log(
+            //     "IS ARRAY:",
+            //     Array.isArray(res.data.content)
+            // );
+            // console.log("================================");
             setContent(res.data.content);
         };
         getContent();
