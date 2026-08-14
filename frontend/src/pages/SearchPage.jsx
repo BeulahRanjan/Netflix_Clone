@@ -15,15 +15,22 @@ const SearchPage = () => {
     const {setContentType} = useContentStore();
 
     const handleTabClick = (tab) => {
-        setActiveTab(tab);
-        tab === "movie"? setContentType("movie") : setContentType("tv");
-        setResults([]);
+         setActiveTab(tab);
+
+    if (tab === "movie" || tab === "tv") {
+        setContentType(tab);
+    }
+
+    setResults([]);
     };
 
     const handleSearch = async(e) =>{
         e.preventDefault();
         try{
+            console.log(searchTerm);
+            console.log(activeTab);
             const res = await axios.get(`/api/v1/search/${activeTab}/${searchTerm}`);
+            console.log(res);
             setResults(res.data.content);
         } catch(error){
             if(error.response.status === 404){
@@ -56,7 +63,8 @@ const SearchPage = () => {
                     <button
                         className={`py-2 px-4 rounded ${
                             activeTab === "person" ? "bg-red-600" : "bg-gray-800"
-                        } hover:bg-red-700`}>
+                        } hover:bg-red-700`}
+                         onClick={() => handleTabClick("person")}>
                             Person
                         </button>
                 </div>
