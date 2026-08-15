@@ -69,7 +69,7 @@ const SearchPage = () => {
                         </button>
                 </div>
 
-                <form className="flex gap-2 items-strectch mb-8 max-w-2xl mx-auto" onSubmit={handleSearch}>
+                <form className="flex gap-2 items-stretch mb-8 max-w-2xl mx-auto" onSubmit={handleSearch}>
                     <input
                         type="text"
                         value={searchTerm}
