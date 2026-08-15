@@ -41,8 +41,11 @@ export async function getTVDetails(req, res) {
     // const { id } =req.params;
     try{
         // const data= await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}?language=en-US`);
+        console.log("🔥 getTVDetails reached:", req.params);
         const data= await ServiceTVDetails(req);
-        res.json({ success:true, content:data.results});
+        
+         console.log("🔥 TV DETAILS FROM SERVICE:", data);
+        res.json({ success:true, content:data});
     } 
     catch(error){
         if(error.message.includes(404)){
