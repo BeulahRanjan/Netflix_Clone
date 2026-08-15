@@ -58,10 +58,15 @@ const WatchPage = () =>{
     useEffect(() => {
         const getContentDetails = async () => {
             try{
+                
                 const res = await axios.get(`/api/v1/${contentType}/${id}/details`);
                 setContent(res.data.content);
             }
             catch(error){
+                    console.log("DETAILS ERROR:", error.response?.status);
+    console.log("DETAILS ERROR DATA:", error.response?.data);
+    console.log("DETAILS ERROR MESSAGE:", error.message);
+
                 if(error.message.includes("404")){
                     setContent(null);
                 }
