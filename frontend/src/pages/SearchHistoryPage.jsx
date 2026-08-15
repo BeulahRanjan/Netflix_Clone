@@ -5,7 +5,7 @@ import { SMALL_IMG_BASE_URL } from "../utils/constants";
 import { Trash } from "lucide-react";
 import toast from "react-hot-toast";
 
-function formatData(dateString) {
+function formatDate(dateString) {
     const date = new Date(dateString);
 
     const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
