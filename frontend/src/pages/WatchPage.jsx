@@ -78,7 +78,7 @@ const WatchPage = () =>{
     //  getContentDetails();}, [contentType, id]);
 
      
-    useEffect(() => {
+useEffect(() => {
     const getContentDetails = async () => {
         try {
             console.log("1. ABOUT TO REQUEST DETAILS");
