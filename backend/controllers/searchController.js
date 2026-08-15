@@ -56,6 +56,8 @@ export async function searchMovie(req,res){
     //         },
     //     },
     // });
+    console.log("searchMovie reached");
+    console.log("params:", req.params);
     const response= await ServicesearchMovie(req);
     res.status(200).json({ success:true, content:response.results});
 }

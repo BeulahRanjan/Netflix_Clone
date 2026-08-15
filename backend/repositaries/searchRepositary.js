@@ -3,7 +3,7 @@ export async function searchPerson(req,query){
     const response = await fetchFromTMDB(`https://api.themoviedb.org/3/search/person?query=${query}&include_adult=false&language=en-US&page=1`);
     
     if(response.results.length === 0) {
-        return res.status(404).send(null);          
+        return null;          
     }
     
     await User.findByIdAndUpdate(req.user._id, {
@@ -25,7 +25,7 @@ export async function searchMovie(req, query){
 
 const response = await fetchFromTMDB(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`);
     if(response.results.length === 0) {
-        return res.status(404).send(null);          
+        return null;          
     }
 
     await User.findByIdAndUpdate(req.user._id, {

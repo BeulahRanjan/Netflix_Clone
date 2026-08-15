@@ -16,11 +16,16 @@ import searchRoutes from "./routes/searchRoutes.js";
 dotenv.config();
 
  const app= express();
+
 const PORT = process.env.PORT || 5000;
 const _dirname=path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
+ app.use((req, res, next) => {
+    console.log("REQUEST:", req.method, req.originalUrl);
+    next();
+});
 
 // app.get("/", (req, res) => {
 //     res.send("Backend is running on port " + PORT);

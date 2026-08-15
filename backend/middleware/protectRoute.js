@@ -4,24 +4,37 @@ import {User} from '../models/userModel.js';
 
 export const protectRoute =async (req,res, next) =>{
     try{
+        console.log("1. protectRoute started");
         const token= req.cookies["jwt-netflix"];
+        console.log("2. token:", token? "exists": "missing");
         if(!token){
             return res.status(401).json({success:false,message:"You need to login first"});
         }
         const decoded= jwt.verify(token,process.env.JWT_SECRET);
+        console.log("3. decoded:", decoded);
         if(!decoded){
             return res.status(401).json({success:false,message:"Invalid Token"});
         }
         const user = await User.findById(decoded.userId).select("-password");
-        if(!user){
-            return res.status(404).json({success:false,message:"User not found"});
+        console.log("4. user:", user? "found": "not found");
+        // if(!user){
+        //     return res.status(404).json({success:false,message:"User not found"});
+        // }
+         if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
         }
         req.user=user;
+         console.log("5. calling next()");
         next();
     }
-    catch(err){
-        console.log("Error in protectRoute middleware:",err.message);
-        //return res.status(500).json({Success:false,message:"Internal Server Error"});
-        
-    }
+catch(err){
+    console.log("Error in protectRoute middleware:", err);
+    return res.status(500).json({
+        success: false,
+        message: "Internal Server Error"
+    });
+}
 }
