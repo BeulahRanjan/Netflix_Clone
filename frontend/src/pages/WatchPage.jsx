@@ -78,40 +78,9 @@ const WatchPage = () =>{
     //  getContentDetails();}, [contentType, id]);
 
      
-useEffect(() => {
-    const getContentDetails = async () => {
-        try {
-            console.log("1. ABOUT TO REQUEST DETAILS");
 
-            const url = `/api/v1/${contentType}/${id}/details`;
 
-            console.log("2. REQUEST URL:", url);
-
-            const res = await axios.get(url);
-
-            console.log("3. DETAILS RESPONSE:", res);
-            console.log("4. DETAILS DATA:", res.data);
-
-            setContent(res.data.content);
-        }
-        catch(error) {
-            console.log("5. DETAILS ERROR:", error);
-            console.log("6. STATUS:", error.response?.status);
-            console.log("7. ERROR DATA:", error.response?.data);
-
-            if(error.response?.status === 404) {
-                setContent(null);
-            }
-        }
-        finally {
-            console.log("8. DETAILS REQUEST FINISHED");
-            setLoading(false);
-        }
-    };
-
-    getContentDetails();
-
-}, [contentType, id]);
+   
     const handleNext = () => {
         if(currentTrailerIdx < trailers.length-1) setCurrentTrailerIdx(currentTrailerIdx + 1);
      };
