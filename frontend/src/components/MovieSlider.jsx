@@ -18,17 +18,7 @@ const MovieSlider =({category})=>{
     useEffect(()=>{
         const getContent =async()=>{
             const res= await axios.get(`/api/v1/${contentType}/${category}`);
-            //  console.log("================================");
-            // console.log("CATEGORY:", category);
-            // console.log("CONTENT TYPE:", contentType);
-            // console.log("URL:", `/api/v1/${contentType}/${category}`);
-            // console.log("SLIDER RESPONSE:", res.data);
-            // console.log("SLIDER CONTENT:", res.data.content);
-            // console.log(
-            //     "IS ARRAY:",
-            //     Array.isArray(res.data.content)
-            // );
-            // console.log("================================");
+
             setContent(res.data.content);
         };
         getContent();
@@ -44,6 +34,13 @@ const MovieSlider =({category})=>{
         sliderRef.current.scrollBy({left:sliderRef.current.offsetWidth, 
             behavior:"smooth"});
     };
+
+//     console.log(
+//     "SLIDER:",
+//     category,
+//     content.map(item => item.title || item.name)
+// );
+
     return(
         <div className="bg-black text-white relative px-5 md:px-20 "
             onMouseEnter={() => setShowArrows(true)}
