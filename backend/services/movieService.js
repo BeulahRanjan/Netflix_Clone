@@ -7,7 +7,7 @@ import {
 } from "../repositaries/movieRepositary.js";
 
 export async function getTrendingMovies() {
-    return await RepositaryTrendingMovies();
+    return await RepositaryTrendingMovies(); 
 }
 
 export async function getMovieTrailers(req){

@@ -21,7 +21,29 @@ export async function getSimilarMovies(id){
     return data;
 }
 
-export async function getMoviesByCategory(category){
-    const data =await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${category}?language=en-US`);
+// export async function getMoviesByCategory(category){
+//     const data =await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${category}?language=en-US`);
+//     return data;
+// }  
+export async function getMoviesByCategory(category) {
+    // console.log("================================");
+    // console.log("CATEGORY RECEIVED:", category);
+
+    const url = `https://api.themoviedb.org/3/movie/${category}?language=en-US`;
+
+    // console.log("TMDB URL:", url);
+
+    const data = await fetchFromTMDB(url);
+
+    // console.log(
+    //     "FIRST 3 MOVIES:",
+    //     data.results?.slice(0, 3).map(movie => ({
+    //         id: movie.id,
+    //         title: movie.title
+    //     }))
+    // );
+
+    // console.log("================================");
+
     return data;
-} 
+}
