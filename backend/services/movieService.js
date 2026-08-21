@@ -4,7 +4,7 @@ import {
     getMovieDetails as RepositaryMovieDetails,
     getSimilarMovies as RepositarySimilarMovies,
     getMoviesByCategory as RepositaryMoviesByCategory
-} from "../repositaries/movieRepositary.js";
+} from ". ./repositaries/movieRepositary.js";
 
 export async function getTrendingMovies() {
     return await RepositaryTrendingMovies(); 
