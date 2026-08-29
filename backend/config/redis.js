@@ -19,9 +19,6 @@ const connectRedis = async () => {
 }
 
 
-await redisClient.set('key', 'value');
-const value = await redisClient.get('key');
 
-console.log('Value from Redis:', value);
     
 export default { redisClient ,connectRedis };
