@@ -52,7 +52,10 @@ if(process.env.NODE_ENV === "production"){
 }
 
 await connectRedis();
+await redisClient.set('key', 'value');
+const value = await redisClient.get('key');
 
+console.log('Value from Redis:', value);
 
 app.listen(PORT, ()=>{
     console.log('Server is running at http://localhost:'+ PORT);
