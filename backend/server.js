@@ -60,7 +60,7 @@ const startServer = async () => {
         await redisClient.connect();
     
         app.listen(PORT, ()=>{
-            console.log('Server is running at http://localhost:'+ PORT);
+            console.log('Server is running at http:/ /localhost:'+ PORT);
         });
     }
     catch(err){
