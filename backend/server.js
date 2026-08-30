@@ -8,7 +8,7 @@ import tvRoutes from "./routes/tvRoutes.js";
 import searchRoutes from "./routes/searchRoutes.js";
 // import { ENV_VARS } from "./config/envVars.js";
  import { connectDB } from "./config/db.js";
- import connectRedis from "./config/redis.js";
+ import redisClient from "./config/redis.js";
  import cookieParser from 'cookie-parser';
  import { protectRoute } from "./middleware/protectRoute.js";
  import path, { dirname } from 'path';
@@ -51,13 +51,23 @@ if(process.env.NODE_ENV === "production"){
     })
 }
 
-await connectRedis();
-await redisClient.set('key', 'value');
-const value = await redisClient.get('key');
 
-console.log('Value from Redis:', value);
 
-app.listen(PORT, ()=>{
-    console.log('Server is running at http://localhost:'+ PORT);
-    connectDB();
-})
+
+const startServer = async () => {
+    try{
+       await connectDB();
+        await redisClient.connect();
+    
+        app.listen(PORT, ()=>{
+            console.log('Server is running at http://localhost:'+ PORT);
+        });
+    }
+    catch(err){
+        console.error("Error starting server:", err);
+    }
+}
+
+startServer();
+
+
