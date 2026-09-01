@@ -1,13 +1,15 @@
 import { fetchFromTMDB } from "../services/tmdbService.js";
 import { getCache, setCache } from "../utils/cache.js";
 
-export async function getTrendingMovies(req,res) {
+export async function getTrendingMovies() {
     try{
+        console.log("GET TRENDING MOVIES CALLED");
         const cacheKey ="movies:trending";
         const cachedMovies= await getCache(cacheKey);
+        console.log("REDIS RESULT:", cachedMovies);
         if(cachedMovies){
             console.log("CACHE HIT");
-            return res.status(200).json(cachedMovies);
+            return cachedMovies;
         }
         console.log("CACHE MISS");
 
@@ -17,15 +19,20 @@ export async function getTrendingMovies(req,res) {
 
         await setCache(cacheKey, randomMovies, 3600);
 
-        return res.status(200).json(randomMovies);
+        return randomMovies;
     }
     catch(error){
         console.error("Error fetching trending movies:", error);
-        return res.status(500).json({ message: "Internal Server error" });
+       
     }
 }
 
 export async function getMovieTrailers(id){
+
+    try{
+        console.log("GET MOVIE TRAILERS CALLED");
+    }
+    const cacheKey= "movies:trailer"
     const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`);
     return data;
 }

@@ -6,8 +6,8 @@ import {
     getMoviesByCategory as RepositaryMoviesByCategory
 } from "../repositaries/movieRepositary.js";
 
-export async function getTrendingMovies(req,res) {
-    return await RepositaryTrendingMovies(req,res); 
+export async function getTrendingMovies() {
+    return await RepositaryTrendingMovies(); 
 }
 
 export async function getMovieTrailers(req){
