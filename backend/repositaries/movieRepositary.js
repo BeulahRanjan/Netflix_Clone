@@ -40,10 +40,14 @@ export async function getMovieTrailers(id){
             console.log("CACHE HIT");
             return cachedMovies;
         }
+        console.log("CACHE MISS");
+        const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`);
+
+        await setCache(cacheKey,data,3600);
+        return data;
     }
     
-    const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`);
-    return data;
+   
 }
 
 export async function getMovieDetails(id){
