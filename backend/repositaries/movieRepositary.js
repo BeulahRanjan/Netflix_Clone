@@ -10,9 +10,15 @@ export async function getTrendingMovies() {
             return res.status(200).json(cachedMovies);
         }
         console.log("CACHE MISS");
+
+        const data = await fetchFromTMDB("https://api.themoviedb.org/3/trending/movie/day?language=en-US");
+
+        const randomMovies = data.results[Math.floor(Math.random() * data.results?.length)];
+
+        await setCache(cacheKey, randomMovies, 3600);
+
+        
     }
-    const data = await fetchFromTMDB("https://api.themoviedb.org/3/trending/movie/day?language=en-US");
-    const randomMovies = data.results[Math.floor(Math.random() * data.results?.length)];
     return randomMovies;
 }
 
