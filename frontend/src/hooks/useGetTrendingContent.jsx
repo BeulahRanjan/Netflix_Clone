@@ -19,7 +19,7 @@ const useGetTrendingContent = () => {
             console.log(
                 "IS ARRAY:",
                 Array.isArray(res.data.content)
-            );
+            )
             setTrendingContent(res.data.content);
         } catch (error) {
             console.log("Trending content error:", error);
