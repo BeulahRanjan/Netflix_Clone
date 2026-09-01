@@ -58,9 +58,22 @@ export async function getMovieDetails(id){
 
         const cacheKey= "movies:detail";
 
-        const cachedMovies= await getCache(cacheKey);
+        const cacheMovies= await getCache(cacheKey);
+
+        console.log("REDIS RESULT: ", cachedMovies);
+
+        if(cacheMovies){
+            console.log("CACHE HIT");
+            return cacheMovies;
+        }
+
+        // console.log("CACHE MISS");
+
+        // const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}?language=en-US`);
+
+        // await
+
     }
-    const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}?language=en-US`);
     return data;
 }
 
