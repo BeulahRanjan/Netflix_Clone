@@ -53,6 +53,9 @@ export async function getMovieTrailers(id){
 }
 
 export async function getMovieDetails(id){
+    try{
+        
+    }
     const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}?language=en-US`);
     return data;
 }
