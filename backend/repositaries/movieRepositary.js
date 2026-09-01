@@ -75,7 +75,7 @@ export async function getMovieDetails(id){
         return data;
 
     }
-    return data;
+    
 }
 
 export async function getSimilarMovies(id){
