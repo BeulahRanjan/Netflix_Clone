@@ -75,7 +75,9 @@ export async function getMovieDetails(id){
         return data;
 
     }
-    
+    catch(error){
+        console.error("Error fetching movie details", error);
+    }
 }
 
 export async function getSimilarMovies(id){
