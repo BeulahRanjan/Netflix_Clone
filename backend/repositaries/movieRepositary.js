@@ -67,11 +67,12 @@ export async function getMovieDetails(id){
             return cacheMovies;
         }
 
-        // console.log("CACHE MISS");
+        console.log("CACHE MISS");
 
-        // const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}?language=en-US`);
+        const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}?language=en-US`);
 
-        // await
+        await setCache(cacheKey, data, 3600);
+        return data;
 
     }
     return data;
