@@ -46,7 +46,9 @@ export async function getMovieTrailers(id){
         await setCache(cacheKey,data,3600);
         return data;
     }
-    
+    catch(error){
+        console.error("Error fetching movie trailers:", error);
+    }
    
 }
 
