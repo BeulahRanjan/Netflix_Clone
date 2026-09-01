@@ -6,5 +6,5 @@ export const getCache = async (key) => {
     if(!data){
         return null;
     }
-   
+   return JSON.parse(data);
 }
