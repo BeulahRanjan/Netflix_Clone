@@ -33,6 +33,13 @@ export async function getMovieTrailers(id){
         console.log("GET MOVIE TRAILERS CALLED");
         const cacheKey= "movies:trailer";
         const cachedMovies= await getCache(cacheKey);
+
+        console.log("REDIS RESULT", cachedMovies);
+
+        if(cachedMovies){
+            console.log("CACHE HIT");
+            return cachedMovies;
+        }
     }
     
     const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`);
