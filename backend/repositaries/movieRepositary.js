@@ -1,4 +1,5 @@
 import { fetchFromTMDB } from "../services/tmdbService.js";
+import { getCache, setCache } from "../utils/cache.js";
 
 export async function getTrendingMovies() {
     const data = await fetchFromTMDB("https://api.themoviedb.org/3/trending/movie/day?language=en-US");
