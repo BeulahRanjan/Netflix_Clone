@@ -12,7 +12,7 @@ export async function getTrendingMovies(req, res) {
         // const data = await fetchFromTMDB("https://api.themoviedb.org/3/trending/movie/day?language=en-US");
         // const randomMovies = data.results[Math.floor(Math.random() * data.results?.length)];
 
-        const data = await ServiceTrendingMovies();
+        const data = await ServiceTrendingMovies(req,res);
         res.json({ success:true, content: data });
     }
     catch(error){
