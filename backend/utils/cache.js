@@ -9,7 +9,7 @@ export const getCache = async (key) => {
    return JSON.parse(data);
 };
 
-export const setCache= async (key, data, ttl=3600){
+export const setCache= async (key, data, ttl=3600) =>{
     await redisClient.set(key,
         JSON.stringify(data),
         {
