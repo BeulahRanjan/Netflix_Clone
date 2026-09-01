@@ -4,7 +4,12 @@ import { getCache, setCache } from "../utils/cache.js";
 export async function getTrendingMovies() {
     try{
         const cacheKey ="movies:trending";
-        
+        const cachedMovies= await getCache(cacheKey);
+        if(cachedMovies){
+            console.log("CACHE HIT");
+            return res.status(200).json(cachedMovies);
+        }
+
     }
     const data = await fetchFromTMDB("https://api.themoviedb.org/3/trending/movie/day?language=en-US");
     const randomMovies = data.results[Math.floor(Math.random() * data.results?.length)];
