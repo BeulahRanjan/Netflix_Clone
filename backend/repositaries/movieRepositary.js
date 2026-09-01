@@ -1,7 +1,7 @@
 import { fetchFromTMDB } from "../services/tmdbService.js";
 import { getCache, setCache } from "../utils/cache.js";
 
-export async function getTrendingMovies() {
+export async function getTrendingMovies(req,res) {
     try{
         const cacheKey ="movies:trending";
         const cachedMovies= await getCache(cacheKey);
@@ -17,9 +17,9 @@ export async function getTrendingMovies() {
 
         await setCache(cacheKey, randomMovies, 3600);
 
-        
+        return res.status(200).json(randomMovies);
     }
-    return randomMovies;
+    
 }
 
 export async function getMovieTrailers(id){
