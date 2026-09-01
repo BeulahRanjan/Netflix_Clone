@@ -19,7 +19,10 @@ export async function getTrendingMovies(req,res) {
 
         return res.status(200).json(randomMovies);
     }
-    
+    catch(error){
+        console.error("Error fetching trending movies:", error);
+        return res.status(500).json({ message: "Internal Server error" });
+    }
 }
 
 export async function getMovieTrailers(id){
