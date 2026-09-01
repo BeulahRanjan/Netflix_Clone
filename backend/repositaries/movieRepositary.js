@@ -57,6 +57,8 @@ export async function getMovieDetails(id){
         console.log("GET MOVIE DETAILS CALLED");
 
         const cacheKey= "movies:detail";
+
+        const cachedMovies= await getCache(cacheKey);
     }
     const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}?language=en-US`);
     return data;
