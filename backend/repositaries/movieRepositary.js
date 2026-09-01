@@ -2,6 +2,10 @@ import { fetchFromTMDB } from "../services/tmdbService.js";
 import { getCache, setCache } from "../utils/cache.js";
 
 export async function getTrendingMovies() {
+    try{
+        const cacheKey ="movies:trending";
+        
+    }
     const data = await fetchFromTMDB("https://api.themoviedb.org/3/trending/movie/day?language=en-US");
     const randomMovies = data.results[Math.floor(Math.random() * data.results?.length)];
     return randomMovies;
