@@ -57,24 +57,24 @@ export async function getMovieTrailers(id){
 
 export async function getMovieDetails(id){
     try{
-        // console.log("GET MOVIE DETAILS CALLED");
+        console.log("GET MOVIE DETAILS CALLED");
 
-        // const cacheKey= `movies:detail:${id}`;
+        const cacheKey= "movies:detail";
 
-        // const cacheMovies= await getCache(cacheKey);
+        const cacheMovies= await redisClient.hGet(cacheKey, String(id));
 
-        // console.log("REDIS RESULT: ", cacheMovies);
+        console.log("REDIS RESULT: ", cacheMovies);
 
-        // if(cacheMovies){
-        //    console.log("CACHE HIT");
-        //     return cacheMovies;
-        // }
+        if(cacheMovies){
+           console.log("CACHE HIT");
+            return JSON.parse(cacheMovies);
+        }
 
-        // console.log("CACHE MISS");
+        console.log("CACHE MISS");
 
         const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}?language=en-US`);
 
-        // await setCache(cacheKey, data, 3600);
+         await redisClient.hSet(cacheKey, String(id), JSON.stringify(data));
         return data;
 
     }
