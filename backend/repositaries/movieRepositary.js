@@ -99,8 +99,11 @@ export async function getSimilarMovies(id){
 
         await setCache(cacheKey,data,3600);
         
+        return data;
     }
-    return data;
+    catch(error){
+        console.error("Error fetching similar movies", error);
+    }
 }
 
 
