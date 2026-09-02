@@ -84,7 +84,7 @@ export async function getMovieDetails(id){
 }
 
 export async function getSimilarMovies(id){
-    try{
+    try{ 
        console.log("GET SIMILAR MOVIES CALLED");
 
         const cacheKey= "movies:similar";
