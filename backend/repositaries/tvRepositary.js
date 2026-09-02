@@ -1,5 +1,6 @@
 import { fetchFromTMDB } from "../services/tmdbService.js";
 
+
 export async function getTrendingTV(){
     try{
         console.log("GET TRENDING TV CALLED");
@@ -32,9 +33,15 @@ export async function getTVTrailers(id){
     try{
         console.log("GET TV TRAILERS CALLED");
         console.log("TV ID:", id);
+
+        const cacheTV= "tv:trailer";
+        const cachedTV= await redisClient.hGet(cacheTV, String(id));
     }
-    const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/videos?language=en-US`);
-    return data;
+    catch(error){
+        console.error("Error fetching TV trailers:", error);
+    }
+   // const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/videos?language=en-US`);
+    //return data;
 } 
 
 export async function getTVDetails(id){
