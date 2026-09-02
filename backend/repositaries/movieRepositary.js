@@ -1,5 +1,6 @@
 import { fetchFromTMDB } from "../services/tmdbService.js";
 import { getCache, setCache } from "../utils/cache.js";
+import redisClient from "../config/redis.js";
 
 export async function getTrendingMovies() {
     try{
@@ -31,19 +32,20 @@ export async function getMovieTrailers(id){
 
     try{
         console.log("GET MOVIE TRAILERS CALLED");
-        const cacheKey= `movies:trailer:${id}`;
-        const cachedMovies= await getCache(cacheKey);
+        console.log("MOVIE ID:", id);
+        const cacheKey= "movies:trailer";
+        const cachedMovies= await redisClient.hGet(cacheKey, String(id));
 
         console.log("REDIS RESULT", cachedMovies);
 
         if(cachedMovies){
             console.log("CACHE HIT");
-            return cachedMovies;
+            return JSON.parse(cachedMovies);
         }
         console.log("CACHE MISS");
         const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`);
 
-        await setCache(cacheKey, data, 3600);
+        await redisClient.hSet(cacheKey,String(id), JSON.stringify(data));
        
         return data;
     }
@@ -55,24 +57,24 @@ export async function getMovieTrailers(id){
 
 export async function getMovieDetails(id){
     try{
-        console.log("GET MOVIE DETAILS CALLED");
+        // console.log("GET MOVIE DETAILS CALLED");
 
-        const cacheKey= "movies:detail";
+        // const cacheKey= `movies:detail:${id}`;
 
-        const cacheMovies= await getCache(cacheKey);
+        // const cacheMovies= await getCache(cacheKey);
 
-        console.log("REDIS RESULT: ", cacheMovies);
+        // console.log("REDIS RESULT: ", cacheMovies);
 
-        if(cacheMovies){
-            console.log("CACHE HIT");
-            return cacheMovies;
-        }
+        // if(cacheMovies){
+        //    console.log("CACHE HIT");
+        //     return cacheMovies;
+        // }
 
-        console.log("CACHE MISS");
+        // console.log("CACHE MISS");
 
         const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}?language=en-US`);
 
-        await setCache(cacheKey, data, 3600);
+        // await setCache(cacheKey, data, 3600);
         return data;
 
     }
@@ -83,22 +85,22 @@ export async function getMovieDetails(id){
 
 export async function getSimilarMovies(id){
     try{
-        console.log("GET SIMILAR MOVIES CALLED");
+    //    console.log("GET SIMILAR MOVIES CALLED");
 
-        const cacheKey= "movies:similar";
-        const cachedMovies = await getCache(cacheKey);
-        console.log("REDIS RESULT: ", cachedMovies);
+    //     const cacheKey= `movies:similar:${id}`;
+    //     const cachedMovies = await getCache(cacheKey);
+    //     console.log("REDIS RESULT: ", cachedMovies);
 
-        if(cachedMovies){
-            console.log("CACHE HIT");
-            return cachedMovies;
-        }
+    //     if(cachedMovies){
+    //        console.log("CACHE HIT");
+    //         return cachedMovies;
+    //     }
 
-        console.log("CACHE MISS");
+    //     console.log("CACHE MISS");
 
         const data = await fetchFromTMDB(` https://api.themoviedb.org/3/movie/${id}/similar?language=en-US`); 
 
-        await setCache(cacheKey,data,3600);
+        // await setCache(cacheKey,data,3600);
         
         return data;
     }
