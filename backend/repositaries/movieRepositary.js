@@ -87,7 +87,7 @@ export async function getSimilarMovies(id){
     try{
        console.log("GET SIMILAR MOVIES CALLED");
 
-        const cacheKey= `movies:similar:${id}`;
+        const cacheKey= "movies:similar";
         const cachedMovies = await redisClient.hGet(cacheKey, String(id));
         console.log("REDIS RESULT: ", cachedMovies);
 
