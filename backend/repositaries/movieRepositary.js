@@ -122,6 +122,7 @@ export async function getMoviesByCategory(category) {
             return cachedMovies;
         }
 
+        console.log("CACHE MISS");
     }
    
 
