@@ -111,6 +111,8 @@ export async function getMoviesByCategory(category) {
 
     try{
         console.log("GET MOVIES BY CATEGORY CALLED");
+        const cacheKey =`movies:${category}`;
+        
     }
    
 
