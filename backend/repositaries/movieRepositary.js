@@ -93,6 +93,7 @@ export async function getSimilarMovies(id){
             return cachedMovies;
         }
 
+        console.log("CACHE MISS");
         
     }
     const data = await fetchFromTMDB(` https://api.themoviedb.org/3/movie/${id}/similar?language=en-US`); 
