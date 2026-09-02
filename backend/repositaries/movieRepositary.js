@@ -31,7 +31,7 @@ export async function getMovieTrailers(id){
 
     try{
         console.log("GET MOVIE TRAILERS CALLED");
-        const cacheKey= "movies:trailer";
+        const cacheKey= `movies:trailer:${id}`;
         const cachedMovies= await getCache(cacheKey);
 
         console.log("REDIS RESULT", cachedMovies);
@@ -43,7 +43,8 @@ export async function getMovieTrailers(id){
         console.log("CACHE MISS");
         const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`);
 
-        await setCache(cacheKey,data,3600);
+        await setCache(cacheKey, data, 3600);
+       
         return data;
     }
     catch(error){
