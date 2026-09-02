@@ -126,6 +126,8 @@ export async function getMoviesByCategory(category) {
 
         const url = `https://api.themoviedb.org/3/movie/${category}?language=en-US`;
 
+        const data = await fetchFromTMDB(url);
+        await setCache(cacheKey, )
 
     }
    
@@ -133,7 +135,7 @@ export async function getMoviesByCategory(category) {
 
    
 
-    const data = await fetchFromTMDB(url);
+    
 
 
 
