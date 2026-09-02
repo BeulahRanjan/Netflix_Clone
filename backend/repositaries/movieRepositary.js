@@ -91,7 +91,7 @@ export async function getMoviesByCategory(category) {
 
     const url = `https://api.themoviedb.org/3/movie/${category}?language=en-US`;
 
-    // console.log("TMDB URL:", url);
+   
 
     const data = await fetchFromTMDB(url);
 
