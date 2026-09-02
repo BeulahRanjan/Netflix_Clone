@@ -95,15 +95,7 @@ export async function getMoviesByCategory(category) {
 
     const data = await fetchFromTMDB(url);
 
-    // console.log(
-    //     "FIRST 3 MOVIES:",
-    //     data.results?.slice(0, 3).map(movie => ({
-    //         id: movie.id,
-    //         title: movie.title
-    //     }))
-    // );
 
-    // console.log("================================");
 
     return data;
 }
