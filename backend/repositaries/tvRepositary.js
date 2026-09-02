@@ -19,7 +19,10 @@ export async function getTrendingTV(){
 
         return randomTVShow;
     }
-    
+    catch(error){
+        console.error("Error fetching trending TV:", error);
+        
+    }
 
 
 }
