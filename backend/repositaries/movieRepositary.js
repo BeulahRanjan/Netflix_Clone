@@ -123,10 +123,13 @@ export async function getMoviesByCategory(category) {
         }
 
         console.log("CACHE MISS");
+
+        const url = `https://api.themoviedb.org/3/movie/${category}?language=en-US`;
+
+
     }
    
 
-    const url = `https://api.themoviedb.org/3/movie/${category}?language=en-US`;
 
    
 
