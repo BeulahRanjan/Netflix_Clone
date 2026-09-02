@@ -83,6 +83,17 @@ export async function getMovieDetails(id){
 export async function getSimilarMovies(id){
     try{
         console.log("GET SIMILAR MOVIES CALLED");
+
+        const cacheKey= "movies:similar";
+        const cachedMovies = await getCache(cacheKey);
+        console.log("REDIS RESULT: ", cachedMovies);
+
+        if(cachedMovies){
+            console.log("CACHE HIT");
+            return cachedMovies;
+        }
+
+        
     }
     const data = await fetchFromTMDB(` https://api.themoviedb.org/3/movie/${id}/similar?language=en-US`); 
     return data;
