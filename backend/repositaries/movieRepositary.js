@@ -81,6 +81,9 @@ export async function getMovieDetails(id){
 }
 
 export async function getSimilarMovies(id){
+    try{
+        console.log("GET SIMILAR MOVIES CALLED");
+    }
     const data = await fetchFromTMDB(` https://api.themoviedb.org/3/movie/${id}/similar?language=en-US`); 
     return data;
 }
