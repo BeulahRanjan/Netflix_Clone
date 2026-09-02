@@ -3,6 +3,8 @@ import { fetchFromTMDB } from "../services/tmdbService.js";
 export async function getTrendingTV(){
     try{
         console.log("GET TRENDING TV CALLED");
+
+        const cacheKey="tv:trending";
     }
  const data = await fetchFromTMDB("https://api.themoviedb.org/3/trending/tv/day?language=en-US");
 const randomTVShow = data.results[Math.floor(Math.random() * data.results?.length)];
