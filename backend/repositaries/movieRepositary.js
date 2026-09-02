@@ -108,6 +108,10 @@ export async function getSimilarMovies(id){
 
 
 export async function getMoviesByCategory(category) {
+
+    try{
+        console.log("GET MOVIES BY CATEGORY CALLED");
+    }
    
 
     const url = `https://api.themoviedb.org/3/movie/${category}?language=en-US`;
