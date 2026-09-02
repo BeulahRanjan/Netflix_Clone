@@ -34,8 +34,8 @@ export async function getTVTrailers(id){
         console.log("GET TV TRAILERS CALLED");
         console.log("TV ID:", id);
 
-        const cacheTV= "tv:trailer";
-        const cachedTV= await redisClient.hGet(cacheTV, String(id));
+        const cacheKey= "tv:trailer";
+        const cachedTV= await redisClient.hGet(cacheKey, String(id));
 
         if(cachedTV){
             console.log("CACHE HIT");
@@ -43,11 +43,15 @@ export async function getTVTrailers(id){
         }
 
         console.log("CACHE MISS");
+        const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/videos?language=en-US`);
+
+        await redisClient.hSet(cacheKey, String(id), JSON.stringify(data));
+        return data;    
     }
     catch(error){
         console.error("Error fetching TV trailers:", error);
     }
-    //return data;
+    
 } 
 
 export async function getTVDetails(id){
