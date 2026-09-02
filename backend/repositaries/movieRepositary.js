@@ -97,6 +97,7 @@ export async function getSimilarMovies(id){
 
         const data = await fetchFromTMDB(` https://api.themoviedb.org/3/movie/${id}/similar?language=en-US`); 
 
+        await setCache(cacheKey,data,3600);
         
     }
     return data;
