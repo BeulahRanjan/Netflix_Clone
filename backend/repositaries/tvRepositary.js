@@ -5,6 +5,15 @@ export async function getTrendingTV(){
         console.log("GET TRENDING TV CALLED");
 
         const cacheKey="tv:trending";
+
+        const cachedTV= await getCache(cacheKey);
+
+        if(cachedTV){
+            console.log("CACHE HIT");
+            return cachedTV;
+        }
+
+        console.log("CACHE MISS");
     }
  const data = await fetchFromTMDB("https://api.themoviedb.org/3/trending/tv/day?language=en-US");
 const randomTVShow = data.results[Math.floor(Math.random() * data.results?.length)];
