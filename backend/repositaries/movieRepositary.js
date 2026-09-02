@@ -60,7 +60,7 @@ export async function getMovieDetails(id){
 
         const cacheMovies= await getCache(cacheKey);
 
-        console.log("REDIS RESULT: ", cachedMovies);
+        console.log("REDIS RESULT: ", cacheMovies);
 
         if(cacheMovies){
             console.log("CACHE HIT");
