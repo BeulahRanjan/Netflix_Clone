@@ -115,7 +115,8 @@ export async function getMoviesByCategory(category) {
 
         const cachedMovies = await getCache(cacheKey);
 
-        
+        console.log("REDIS RESULT: ", cachedMovies);
+
     }
    
 
