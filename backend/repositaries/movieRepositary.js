@@ -94,9 +94,11 @@ export async function getSimilarMovies(id){
         }
 
         console.log("CACHE MISS");
+
+        const data = await fetchFromTMDB(` https://api.themoviedb.org/3/movie/${id}/similar?language=en-US`); 
+
         
     }
-    const data = await fetchFromTMDB(` https://api.themoviedb.org/3/movie/${id}/similar?language=en-US`); 
     return data;
 }
 
