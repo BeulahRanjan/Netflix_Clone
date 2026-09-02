@@ -117,6 +117,11 @@ export async function getMoviesByCategory(category) {
 
         console.log("REDIS RESULT: ", cachedMovies);
 
+        if(cachedMovies){
+            console.log("CACHE HIT");
+            return cachedMovies;
+        }
+
     }
    
 
