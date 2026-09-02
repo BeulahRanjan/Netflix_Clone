@@ -85,10 +85,7 @@ export async function getSimilarMovies(id){
     return data;
 }
 
-// export async function getMoviesByCategory(category){
-//     const data =await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${category}?language=en-US`);
-//     return data;
-// }  
+
 export async function getMoviesByCategory(category) {
     // console.log("================================");
     // console.log("CATEGORY RECEIVED:", category);
