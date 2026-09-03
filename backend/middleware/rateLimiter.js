@@ -17,5 +17,7 @@ export async function rateLimiter(req,res,next){
             tokens:CAPACITY,
             lastRefillTime: Date.now()
         };
+
+        bucket.tokens--;
     }
 }
