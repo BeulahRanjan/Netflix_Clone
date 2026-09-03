@@ -95,9 +95,14 @@ export async function getSimilarTV(id){
             console.log("CACHE HIT");
             return JSON.parse(cachedTV);
         }
+
+        console.log("CACHE MISS");
+        const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/similar?language=en-US&page=1`);
+
+        await redisClient.hSet(cacheKey, String(id), JSON.stringify(data));
+        return data;
     }
-    const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/similar?language=en-US&page=1`);
-    return data;
+    
 }
 
 export async function getTVByCategory(category){
