@@ -1,7 +1,17 @@
 import { fetchFromTMDB } from "../services/tmdbService.js";
 import  { User } from "../models/userModel.js";
+import redisClient from "../config/redis.js";
+
+
 export async function searchPerson(req,query){
-    
+    try{
+        const cacheKey="search:person";
+
+        const cachedPerson= await redisClient.hGet(cacheKey, String(query.toLowerCase().trim()));
+        
+    }
+
+
     const response = await fetchFromTMDB(`https://api.themoviedb.org/3/search/person?query=${query}&include_adult=false&language=en-US&page=1`);
     
     if(response.results.length === 0) {
