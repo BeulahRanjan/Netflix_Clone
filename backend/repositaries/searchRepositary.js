@@ -22,7 +22,9 @@ export async function searchPerson(req,query){
             return null;          
         }
 
-        
+        await redisClient.hSet(cacheKey,String(query.toLowerCase().trim()), JSON.stringify(response), {
+            EX: 3600,
+        });
 
     }
 
