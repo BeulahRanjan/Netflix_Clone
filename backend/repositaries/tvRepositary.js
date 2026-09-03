@@ -1,5 +1,6 @@
 import { fetchFromTMDB } from "../services/tmdbService.js";
-
+import { getCache, setCache } from "../utils/cache.js";
+import redisClient from "../config/redis.js";
 
 export async function getTrendingTV(){
     try{
