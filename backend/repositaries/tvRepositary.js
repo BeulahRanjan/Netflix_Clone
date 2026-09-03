@@ -61,7 +61,7 @@ export async function getTVDetails(id){
     const data= await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}?language=en-US`);
     
 
-    console.log("TV DETAILS DATA:", data);
+    
     return data;
 }
 
