@@ -6,7 +6,11 @@ export async function rateLimiter(req,res,next){
 
     const ip= req.ip;
     const key=`rate_limit:${ip}`;
-    const bucket= await redisClient.get(key);
     const exists= await redisClient.exists(key);
 
+    if(exists){
+
+    }else{
+
+    }
 }
