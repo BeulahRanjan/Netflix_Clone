@@ -55,7 +55,9 @@ export async function getTVTrailers(id){
 } 
 
 export async function getTVDetails(id){
-
+    try{
+        console.log("GET TV DETAILS CALLED");
+    }
 
     
     const data= await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}?language=en-US`);
