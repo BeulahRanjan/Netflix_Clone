@@ -26,13 +26,7 @@ export async function searchPerson(req,query){
             EX: 3600,
         });
 
-    }
-
-
-    
-   
-    
-    await User.findByIdAndUpdate(req.user._id, {
+        await User.findByIdAndUpdate(req.user._id, {
         $push:{
             searchHistory: {
                 id:response.results[0].id,
@@ -43,6 +37,14 @@ export async function searchPerson(req,query){
             },
         },
     });
+
+    }
+
+
+    
+   
+    
+
 
     return response;
 }
