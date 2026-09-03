@@ -86,6 +86,10 @@ export async function getTVDetails(id){
 export async function getSimilarTV(id){
     try{
         console.log("GET SIMILAR TV CALLED");
+        console.log("TV ID:", id);
+
+        const  cacheKey= "tv:similar";
+        
     }
     const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/similar?language=en-US&page=1`);
     return data;
