@@ -94,12 +94,13 @@ export async function getSimilarTV(id){
         if(cachedTV){
             console.log("CACHE HIT");
             return JSON.parse(cachedTV);
-        }
+        } 
 
         console.log("CACHE MISS");
         const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/similar?language=en-US&page=1`);
 
         await redisClient.hSet(cacheKey, String(id), JSON.stringify(data));
+        await redisClient.expire(cacheKey, 3600);
         return data;
     }
     catch(error){
