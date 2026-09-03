@@ -14,6 +14,8 @@ export async function getTrendingTV(req, res) {
 
         console.log("TV CONTROLLER CALLED");
         const data= await ServiceTrendingTV();
+        console.log("TV CONTROLLER DATA:", data);
+        console.log("TV CONTROLLER DATA TYPE:", typeof data);
         res.json({ success:true, content: data });
     }
     catch(error){
