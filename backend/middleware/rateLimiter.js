@@ -9,6 +9,7 @@ export async function rateLimiter(req,res,next){
     const exists= await redisClient.exists(key);
 
     if(exists){
+    const bucket= await redisClient.get(key);
 
     }else{
 
