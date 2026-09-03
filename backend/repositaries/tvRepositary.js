@@ -73,6 +73,7 @@ export async function getTVDetails(id){
         const data= await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}?language=en-US`);
 
         await redisClient.hSet(cacheKey, String(id), JSON.stringify(data));
+        await redisClient.expire(cacheKey, 3600);
 
         return data;
 
@@ -124,7 +125,7 @@ export async function getTVByCategory(category){
         console.log("CACHE MISS");
         const data =  await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${category}?language=en-US&page=1`);
 
-        await setCache(cacheKey, data);
+        await setCache(cacheKey, data,3600);
 
         return data;
     }
