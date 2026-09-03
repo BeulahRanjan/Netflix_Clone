@@ -89,7 +89,12 @@ export async function getSimilarTV(id){
         console.log("TV ID:", id);
 
         const  cacheKey= "tv:similar";
-        
+        const cachedTV= await redisClient.hGet(cacheKey, String(id));;
+
+        if(cachedTV){
+            console.log("CACHE HIT");
+            return JSON.parse(cachedTV);
+        }
     }
     const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/similar?language=en-US&page=1`);
     return data;
