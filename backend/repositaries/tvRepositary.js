@@ -81,11 +81,6 @@ export async function getTVDetails(id){
         console.error("Error fetching TV details:", error);
     }
 
-    
-    
-
-    
-    return data;
 }
 
 export async function getSimilarTV(id){
