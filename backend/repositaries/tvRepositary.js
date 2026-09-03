@@ -127,5 +127,7 @@ export async function getTVByCategory(category){
 
         return data;
     }
-
+    catch(error){
+        console.error("Error fetching TV by category:", error);
+    }
 } 
