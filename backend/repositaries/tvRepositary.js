@@ -119,7 +119,13 @@ export async function getTVByCategory(category){
             console.log("CACHE HIT");
             return cachedTV;
         }
+
+        console.log("CACHE MISS");
+        const data =  await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${category}?language=en-US&page=1`);
+
+        await setCache(cacheKey, data);
+
+        return data;
     }
-    const data =  await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${category}?language=en-US&page=1`);
-    return data;
+
 } 
