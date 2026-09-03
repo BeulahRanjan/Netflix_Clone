@@ -63,11 +63,22 @@ export async function getTVDetails(id){
 
         const cachedTV= await redisClient.hGet(cacheKey, String(id));
 
-        
+        if(cachedTV){
+            console.log("CACHE HIT");
+            return JSON.parse(cachedTV);
+        }
+
+        console.log("CACHE MISS");
+
+        const data= await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}?language=en-US`);
+
+        await redisClient.hSet(cacheKey, String(id), JSON.stringify(data));
+
+        return data;
+
     }
 
     
-    const data= await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}?language=en-US`);
     
 
     
