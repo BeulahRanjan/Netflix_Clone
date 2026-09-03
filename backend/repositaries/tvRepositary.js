@@ -77,6 +77,9 @@ export async function getTVDetails(id){
         return data;
 
     }
+    catch(error){
+        console.error("Error fetching TV details:", error);
+    }
 
     
     
