@@ -102,7 +102,9 @@ export async function getSimilarTV(id){
         await redisClient.hSet(cacheKey, String(id), JSON.stringify(data));
         return data;
     }
-    
+    catch(error){
+        console.error("Error fetching similar TV:", error);
+    }
 }
 
 export async function getTVByCategory(category){
