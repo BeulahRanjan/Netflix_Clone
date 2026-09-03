@@ -38,6 +38,8 @@ export async function searchPerson(req,query){
         },
     });
 
+     return response;
+
     }
 
 
@@ -46,7 +48,7 @@ export async function searchPerson(req,query){
     
 
 
-    return response;
+   
 }
 
 export async function searchMovie(req, query){
