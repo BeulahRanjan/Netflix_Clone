@@ -18,6 +18,7 @@ export async function getTrendingTV(){
         const data = await fetchFromTMDB("https://api.themoviedb.org/3/trending/tv/day?language=en-US");
         const randomTVShow = data.results[Math.floor(Math.random() * data.results?.length)];
 
+        await setCache(cacheKey, randomTVShow, 3600);
         return randomTVShow;
     }
     catch(error){
