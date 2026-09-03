@@ -19,5 +19,7 @@ export async function rateLimiter(req,res,next){
         };
 
         bucket.tokens--;
+
+        await redisClient.set(key, JSON.stringify(bucket));
     }
 }
