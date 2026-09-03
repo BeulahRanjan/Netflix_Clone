@@ -46,6 +46,7 @@ export async function getTVTrailers(id){
         const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/videos?language=en-US`);
 
         await redisClient.hSet(cacheKey, String(id), JSON.stringify(data));
+        await redisClient.expire(cacheKey, 3600);
         return data;    
     }
     catch(error){
