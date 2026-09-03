@@ -108,6 +108,11 @@ export async function getSimilarTV(id){
 }
 
 export async function getTVByCategory(category){
+    try{
+        console.log("GET TV BY CATEGORY CALLED");
+
+        const cacheKey= `tv:${category}`;
+    }
     const data =  await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${category}?language=en-US&page=1`);
     return data;
 } 
