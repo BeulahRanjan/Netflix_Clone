@@ -57,6 +57,13 @@ export async function getTVTrailers(id){
 export async function getTVDetails(id){
     try{
         console.log("GET TV DETAILS CALLED");
+        console.log("TV ID:", id);
+
+        const cacheKey= "tv:detail";
+
+        const cachedTV= await redisClient.hGet(cacheKey, String(id));
+
+        
     }
 
     
