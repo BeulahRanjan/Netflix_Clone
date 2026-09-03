@@ -42,12 +42,9 @@ export async function searchPerson(req,query){
 
     }
 
-
-    
-   
-    
-
-
+    catch(error){
+        console.error("Error searching person:", error);
+    }
    
 }
 
