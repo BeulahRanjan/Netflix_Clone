@@ -18,7 +18,7 @@ export async function getTrendingMovies() {
 
         const randomMovies = data.results[Math.floor(Math.random() * data.results?.length)];
 
-        await setCache(cacheKey, randomMovies, 3600);
+        await setCache(cacheKey, randomMovies, 86400);
 
         return randomMovies;
     }
@@ -46,7 +46,7 @@ export async function getMovieTrailers(id){
         const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`);
 
         await redisClient.hSet(cacheKey,String(id), JSON.stringify(data));
-       await redisClient.expire(cacheKey,3600);
+       await redisClient.expire(cacheKey,86400);
         return data;
     }
     catch(error){
@@ -75,7 +75,7 @@ export async function getMovieDetails(id){
         const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}?language=en-US`);
 
         await redisClient.hSet(cacheKey, String(id), JSON.stringify(data));
-        await redisClient.expire(cacheKey, 3600);
+        await redisClient.expire(cacheKey, 86400);
         return data;
 
     }
@@ -102,7 +102,7 @@ export async function getSimilarMovies(id){
         const data = await fetchFromTMDB(` https://api.themoviedb.org/3/movie/${id}/similar?language=en-US`); 
 
         await redisClient.hSet(cacheKey, String(id), JSON.stringify(data));
-        await redisClient.expire(cacheKey, 3600);
+        await redisClient.expire(cacheKey, 86400);
         
         return data;
     }
@@ -132,7 +132,7 @@ export async function getMoviesByCategory(category) {
         const url = `https://api.themoviedb.org/3/movie/${category}?language=en-US`;
 
         const data = await fetchFromTMDB(url);
-        await setCache(cacheKey,data, 3600 );
+        await setCache(cacheKey,data, 86400 );
 
         return data;    
 

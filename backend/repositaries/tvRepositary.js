@@ -18,7 +18,7 @@ export async function getTrendingTV(){
         const data = await fetchFromTMDB("https://api.themoviedb.org/3/trending/tv/day?language=en-US");
         const randomTVShow = data.results[Math.floor(Math.random() * data.results?.length)];
 
-        await setCache(cacheKey, randomTVShow, 3600);
+        await setCache(cacheKey, randomTVShow, 86400);
         return randomTVShow;
     }
     catch(error){
@@ -47,7 +47,7 @@ export async function getTVTrailers(id){
         const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/videos?language=en-US`);
 
         await redisClient.hSet(cacheKey, String(id), JSON.stringify(data));
-        await redisClient.expire(cacheKey, 3600);
+        await redisClient.expire(cacheKey, 86400);
         return data;    
     }
     catch(error){
@@ -75,7 +75,7 @@ export async function getTVDetails(id){
         const data= await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}?language=en-US`);
 
         await redisClient.hSet(cacheKey, String(id), JSON.stringify(data));
-        await redisClient.expire(cacheKey, 3600);
+        await redisClient.expire(cacheKey, 86400);
 
         return data;
 
@@ -103,7 +103,7 @@ export async function getSimilarTV(id){
         const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/similar?language=en-US&page=1`);
 
         await redisClient.hSet(cacheKey, String(id), JSON.stringify(data));
-        await redisClient.expire(cacheKey, 3600);
+        await redisClient.expire(cacheKey, 86400);
         return data;
     }
     catch(error){
@@ -127,7 +127,7 @@ export async function getTVByCategory(category){
         console.log("CACHE MISS");
         const data =  await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${category}?language=en-US&page=1`);
 
-        await setCache(cacheKey, data,3600);
+        await setCache(cacheKey, data,86400);
 
         return data;
     }

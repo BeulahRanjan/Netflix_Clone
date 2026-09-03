@@ -1,5 +1,6 @@
 import { fetchFromTMDB } from "../services/tmdbService.js";
 import  { User } from "../models/userModel.js";
+
 export async function searchPerson(req,query){
     
     const response = await fetchFromTMDB(`https://api.themoviedb.org/3/search/person?query=${query}&include_adult=false&language=en-US&page=1`);
