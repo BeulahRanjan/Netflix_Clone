@@ -112,6 +112,13 @@ export async function getTVByCategory(category){
         console.log("GET TV BY CATEGORY CALLED");
 
         const cacheKey= `tv:${category}`;
+
+        const cachedTV= await getCache(cacheKey);
+
+        if(cachedTV){
+            console.log("CACHE HIT");
+            return cachedTV;
+        }
     }
     const data =  await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${category}?language=en-US&page=1`);
     return data;
