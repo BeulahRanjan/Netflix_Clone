@@ -11,8 +11,10 @@ export async function rateLimiter(req,res,next){
     if(exists){
     const bucket= JSON.parse(await redisClient.get(key));
     const now= Date.now();
+    const REFILL_RATE =5;
     const elapsedTime= now - bucket.lastRefillTime;
     const elapsedSeconds=elapsedTime/1000;
+    const tokensToAdd= elapsedSeconds * REFILL_RATE;
 
     }else{
 
