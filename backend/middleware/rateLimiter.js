@@ -12,6 +12,7 @@ export async function rateLimiter(req,res,next){
     const bucket= JSON.parse(await redisClient.get(key));
     const now= Date.now();
     const elaspedTime= now - bucket.lastRefillTime;
+    const elapsedSeconds=elapsedTime/1000;
 
     }else{
 
