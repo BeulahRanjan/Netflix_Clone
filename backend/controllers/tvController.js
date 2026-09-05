@@ -60,11 +60,11 @@ export async function getTVTrailers(req, res) {
 
 export async function getTVDetails(req, res) {
     try {
-        console.log("TV DETAILS CONTROLLER:", req.params);
+        // console.log("TV DETAILS CONTROLLER:", req.params);
 
         const data = await ServiceTVDetails(req);
 
-        console.log("TV DETAILS SERVICE RESPONSE:", data);
+        // console.log("TV DETAILS SERVICE RESPONSE:", data);
 
         res.status(200).json({
             success: true,
