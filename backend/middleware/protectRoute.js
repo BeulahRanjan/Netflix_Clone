@@ -6,7 +6,7 @@ export const protectRoute =async (req,res, next) =>{
     try{
         // console.log("1. protectRoute started");
         const token= req.cookies["jwt-netflix"];
-        console.log("2. token:", token? "exists": "missing");
+        //console.log("2. token:", token? "exists": "missing");
         if(!token){
             return res.status(401).json({success:false,message:"You need to login first"});
         }
