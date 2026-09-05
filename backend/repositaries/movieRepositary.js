@@ -4,12 +4,12 @@ import redisClient from "../config/redis.js";
 
 export async function getTrendingMovies() {
     try{
-        console.log("GET TRENDING MOVIES CALLED");
+       // console.log("GET TRENDING MOVIES CALLED");
         const cacheKey ="movies:trending";
         const cachedMovies= await getCache(cacheKey);
-        console.log("REDIS RESULT:", cachedMovies);
+        //console.log("REDIS RESULT:", cachedMovies);
         if(cachedMovies){
-            console.log("CACHE HIT");
+            //console.log("CACHE HIT");
             return cachedMovies;
         }
         console.log("CACHE MISS");
