@@ -14,12 +14,12 @@ const useGetTrendingContent = () => {
             const res = await axios.get(
                 `/api/v1/${contentType}/trending`
             );
-           console.log("TRENDING RESPONSE:", res.data);
-            console.log("TRENDING CONTENT:", res.data.content);
-            console.log(
-                "IS ARRAY:",
-                Array.isArray(res.data.content)
-            )
+        //    console.log("TRENDING RESPONSE:", res.data);
+            // console.log("TRENDING CONTENT:", res.data.content);
+            // console.log(
+            //     "IS ARRAY:",
+            //     Array.isArray(res.data.content)
+            // )
             setTrendingContent(res.data.content);
         } catch (error) {
             console.log("Trending content error:", error);

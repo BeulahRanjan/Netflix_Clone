@@ -21,8 +21,8 @@ function HomeScreen() {
     </div>
   );
 
-  console.log("HOME CONTENT TYPE:", contentType);
-console.log("HERO CONTENT:", trendingContent);
+//   console.log("HOME CONTENT TYPE:", contentType);
+// console.log("HERO CONTENT:", trendingContent);
 
   return (
     <>
