@@ -15,8 +15,8 @@ import axios from 'axios';
 //      }
 
 export const fetchFromTMDB = async (url, retries = 3) => {
-      console.log("TMDB KEY EXISTS:", !!process.env.TMDB_API_KEY);
-    console.log("URL:", url);
+    //   console.log("TMDB KEY EXISTS:", !!process.env.TMDB_API_KEY);
+    // console.log("URL:", url);
     for (let attempt = 1; attempt <= retries; attempt++) {
         try {
             const response = await fetch(
