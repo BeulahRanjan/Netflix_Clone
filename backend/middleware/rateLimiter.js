@@ -6,6 +6,7 @@ export async function rateLimiter(req,res,next){
 
     console.log("RATE LIMITER HIT");
     const ip= req.ip;
+
     const key=`rate_limit:${ip}`;
     const exists= await redisClient.exists(key);
 
@@ -18,6 +19,8 @@ export async function rateLimiter(req,res,next){
     const tokensToAdd= elapsedSeconds * REFILL_RATE;
     bucket.tokens= Math.min(bucket.tokens + tokensToAdd, CAPACITY);
     bucket.lastRefillTime= now;
+    console.log("IP:", ip);
+    console.log("Tokens:",bucket.tokens);
 
     if(bucket.tokens>=1){
         bucket.tokens--;
