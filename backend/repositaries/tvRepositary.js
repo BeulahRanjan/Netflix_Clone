@@ -89,18 +89,18 @@ export async function getTVDetails(id){
 
 export async function getSimilarTV(id){
     try{
-        console.log("GET SIMILAR TV CALLED");
-        console.log("TV ID:", id);
+        // console.log("GET SIMILAR TV CALLED");
+        // console.log("TV ID:", id);
 
         const  cacheKey= "tv:similar";
         const cachedTV= await redisClient.hGet(cacheKey, String(id));;
 
         if(cachedTV){
-            console.log("CACHE HIT");
+           // console.log("CACHE HIT");
             return JSON.parse(cachedTV);
         } 
 
-        console.log("CACHE MISS");
+        // // console.log("CACHE MISS");
         const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/similar?language=en-US&page=1`);
 
         await redisClient.hSet(cacheKey, String(id), JSON.stringify(data));
