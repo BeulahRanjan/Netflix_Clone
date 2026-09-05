@@ -115,19 +115,19 @@ export async function getSimilarMovies(id){
 export async function getMoviesByCategory(category) {
 
     try{
-        console.log("GET MOVIES BY CATEGORY CALLED");
+        //console.log("GET MOVIES BY CATEGORY CALLED");
         const cacheKey =`movies:${category}`;
 
         const cachedMovies = await getCache(cacheKey);
 
-        console.log("REDIS RESULT: ", cachedMovies);
+        //console.log("REDIS RESULT: ", cachedMovies);
 
         if(cachedMovies){
-            console.log("CACHE HIT");
+          //  console.log("CACHE HIT");
             return cachedMovies;
         }
 
-        console.log("CACHE MISS");
+        //console.log("CACHE MISS");
 
         const url = `https://api.themoviedb.org/3/movie/${category}?language=en-US`;
 
