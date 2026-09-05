@@ -5,7 +5,9 @@ import redisClient from "../config/redis.js";
 export async function rateLimiter(req,res,next){
 
     console.log("RATE LIMITER HIT");
-    const ip= req.ip;
+    const ip = req.ip === "::1"
+    ? "127.0.0.1"
+    : req.ip;
     console.log("PATH:", req.path);
     console.log("METHOD:", req.method);
 
