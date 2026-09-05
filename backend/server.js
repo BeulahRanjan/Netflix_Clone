@@ -23,10 +23,10 @@ const _dirname=path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
- app.use((req, res, next) => {
-    console.log("REQUEST:", req.method, req.originalUrl);
-    next();
-});
+//  app.use((req, res, next) => {
+//     console.log("REQUEST:", req.method, req.originalUrl);
+//     next();
+// });
 
 // app.get("/", (req, res) => {
 //     res.send("Backend is running on port " + PORT);
