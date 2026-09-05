@@ -11,7 +11,7 @@ export const protectRoute =async (req,res, next) =>{
             return res.status(401).json({success:false,message:"You need to login first"});
         }
         const decoded= jwt.verify(token,process.env.JWT_SECRET);
-        console.log("3. decoded:", decoded);
+        //console.log("3. decoded:", decoded);
         if(!decoded){
             return res.status(401).json({success:false,message:"Invalid Token"});
         }
