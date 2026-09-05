@@ -12,10 +12,10 @@ export async function getTrendingTV(req, res) {
         // const data = await fetchFromTMDB("https://api.themoviedb.org/3/trending/tv/day?language=en-US");
         // const randomTVShow = data.results[Math.floor(Math.random() * data.results?.length)];
 
-        console.log("TV CONTROLLER CALLED");
+        // console.log("TV CONTROLLER CALLED");
         const data= await ServiceTrendingTV();
-        console.log("TV CONTROLLER DATA:", data);
-        console.log("TV CONTROLLER DATA TYPE:", typeof data);
+        // console.log("TV CONTROLLER DATA:", data);
+        // console.log("TV CONTROLLER DATA TYPE:", typeof data);
         res.json({ success:true, content: data });
     }
     catch(error){
