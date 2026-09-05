@@ -1,7 +1,7 @@
 import redisClient from "../config/redis.js";
 
-    const CAPACITY =20;
-    const REFILL_RATE =5;
+    const CAPACITY =3;
+    const REFILL_RATE =1;
 export async function rateLimiter(req,res,next){
 
     const ip= req.ip;
