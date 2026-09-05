@@ -38,9 +38,9 @@ export const fetchFromTMDB = async (url, retries = 3) => {
             return await response.json();
         } catch (error) {
 
-            console.error(
-                `TMDB attempt ${attempt} failed:`, error.response?.status,
-            error.response?.data || error.message);
+            // console.error(
+            //     `TMDB attempt ${attempt} failed:`, error.response?.status,
+            // error.response?.data || error.message);
             if (attempt === retries) throw error;
 
 
