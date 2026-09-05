@@ -33,18 +33,18 @@ export async function getTrendingTV(){
 export async function getTVTrailers(id){
 
     try{
-        console.log("GET TV TRAILERS CALLED");
-        console.log("TV ID:", id);
+        // console.log("GET TV TRAILERS CALLED");
+        // console.log("TV ID:", id);
 
         const cacheKey= "tv:trailer";
         const cachedTV= await redisClient.hGet(cacheKey, String(id));
 
         if(cachedTV){
-            console.log("CACHE HIT");
+            // console.log("CACHE HIT");
             return JSON.parse(cachedTV);
         }
 
-        console.log("CACHE MISS");
+        // console.log("CACHE MISS");
         const data = await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${id}/videos?language=en-US`);
 
         await redisClient.hSet(cacheKey, String(id), JSON.stringify(data));
