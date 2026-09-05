@@ -114,18 +114,18 @@ export async function getSimilarTV(id){
 
 export async function getTVByCategory(category){
     try{
-        console.log("GET TV BY CATEGORY CALLED");
+       // console.log("GET TV BY CATEGORY CALLED");
 
         const cacheKey= `tv:${category}`;
 
         const cachedTV= await getCache(cacheKey);
 
         if(cachedTV){
-            console.log("CACHE HIT");
+            //console.log("CACHE HIT");
             return cachedTV;
         }
 
-        console.log("CACHE MISS");
+        //console.log("CACHE MISS");
         const data =  await fetchFromTMDB(`https://api.themoviedb.org/3/tv/${category}?language=en-US&page=1`);
 
         await setCache(cacheKey, data,86400);
