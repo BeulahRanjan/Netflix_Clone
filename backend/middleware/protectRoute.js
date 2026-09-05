@@ -4,7 +4,7 @@ import {User} from '../models/userModel.js';
 
 export const protectRoute =async (req,res, next) =>{
     try{
-        console.log("1. protectRoute started");
+        // console.log("1. protectRoute started");
         const token= req.cookies["jwt-netflix"];
         console.log("2. token:", token? "exists": "missing");
         if(!token){
