@@ -86,18 +86,18 @@ export async function getMovieDetails(id){
 
 export async function getSimilarMovies(id){
     try{ 
-       console.log("GET SIMILAR MOVIES CALLED");
+      // console.log("GET SIMILAR MOVIES CALLED");
 
         const cacheKey= "movies:similar";
         const cachedMovies = await redisClient.hGet(cacheKey, String(id));
-        console.log("REDIS RESULT: ", cachedMovies);
+        //console.log("REDIS RESULT: ", cachedMovies);
 
         if(cachedMovies){
-           console.log("CACHE HIT");
+          // console.log("CACHE HIT");
             return JSON.parse(cachedMovies);
         }
 
-        console.log("CACHE MISS");
+        // console.log("CACHE MISS");
 
         const data = await fetchFromTMDB(` https://api.themoviedb.org/3/movie/${id}/similar?language=en-US`); 
 
