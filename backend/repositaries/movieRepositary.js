@@ -31,18 +31,18 @@ export async function getTrendingMovies() {
 export async function getMovieTrailers(id){
 
     try{
-        console.log("GET MOVIE TRAILERS CALLED");
-        console.log("MOVIE ID:", id);
+        // console.log("GET MOVIE TRAILERS CALLED");
+        // console.log("MOVIE ID:", id);
         const cacheKey= "movies:trailer";
         const cachedMovies= await redisClient.hGet(cacheKey, String(id));
 
-        console.log("REDIS RESULT", cachedMovies);
+        // console.log("REDIS RESULT", cachedMovies);
 
         if(cachedMovies){
-            console.log("CACHE HIT");
+            // console.log("CACHE HIT");
             return JSON.parse(cachedMovies);
         }
-        console.log("CACHE MISS");
+        // // console.log("CACHE MISS");
         const data= await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`);
 
         await redisClient.hSet(cacheKey,String(id), JSON.stringify(data));
