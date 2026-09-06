@@ -4,7 +4,7 @@ import redisClient from "../config/redis.js";
     const REFILL_RATE =0;
 export async function rateLimiter(req, res, next) {
 
-    //console.log("RATE LIMITER HIT");
+    console.log("RATE LIMITER HIT");
 
     const ip = req.ip === "::1" || req.ip === "::ffff:127.0.0.1"
         ? "127.0.0.1"
