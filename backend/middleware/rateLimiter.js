@@ -26,7 +26,7 @@ export async function rateLimiter(req, res, next) {
 
         const bucket = JSON.parse(cachedBucket);
 
-        //console.log("BUCKET BEFORE REFILL:", bucket);
+        console.log("BUCKET BEFORE REFILL:", bucket);
     //const bucket= JSON.parse(await redisClient.get(key));
     const now= Date.now();
     //const REFILL_RATE =5;
