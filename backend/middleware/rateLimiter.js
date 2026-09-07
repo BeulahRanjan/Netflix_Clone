@@ -35,8 +35,8 @@ export async function rateLimiter(req, res, next) {
     const tokensToAdd= elapsedSeconds * REFILL_RATE;
     
     console.log("NOW:", now);
-    //console.log("LAST REFILL:", bucket.lastRefillTime);
-    console.log("ELAPSED MS:", elapsedTime);
+    console.log("LAST REFILL:", bucket.lastRefillTime);
+    //console.log("ELAPSED MS:", elapsedTime);
     console.log("ELAPSED SEC:", elapsedSeconds);
     console.log("TOKENS TO ADD:", tokensToAdd);
     console.log("TOKENS BEFORE:", bucket.tokens);
