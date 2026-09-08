@@ -1,7 +1,7 @@
 import redisClient from "../config/redis.js";
 
     const CAPACITY =3;
-    const REFILL_RATE =0;
+    const REFILL_RATE =1;
 export async function rateLimiter(req, res, next) {
 
     console.log("RATE LIMITER HIT");
@@ -48,7 +48,9 @@ export async function rateLimiter(req, res, next) {
 
     if(bucket.tokens>=1){
         bucket.tokens--;
-        await redisClient.set(key, JSON.stringify(bucket));
+        await redisClient.set(key, JSON.stringify(bucket),{
+            KEEPTTL:true
+        });
         return next();
     }
 
@@ -67,8 +69,13 @@ export async function rateLimiter(req, res, next) {
         bucket.tokens--;
 
         await redisClient.set(key, JSON.stringify(bucket),{
-            KEEPTTL:true
+            EX:3600
         });
+
+        console.log("SET RESULT:", result);
+
+        const TTL = await redisClient.ttl(key);
+        console.log("NEW BUCKET CREATED WITH TTL:", TTL);
 
         return next();
     }
