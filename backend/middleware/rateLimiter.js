@@ -41,7 +41,7 @@ export async function rateLimiter(req, res, next) {
     console.log("TOKENS TO ADD:", tokensToAdd);
     console.log("TOKENS BEFORE:", bucket.tokens);
     bucket.tokens= Math.min(bucket.tokens + tokensToAdd, CAPACITY);
-    console.log("TOKENS AFTER REFILL:", bucket.tokens);
+    //console.log("TOKENS AFTER REFILL:", bucket.tokens);
     bucket.lastRefillTime= now;
     console.log("IP:", ip);
     console.log("Tokens:",bucket.tokens);
