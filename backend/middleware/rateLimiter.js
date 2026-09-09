@@ -22,7 +22,7 @@ export async function rateLimiter(req, res, next) {
 
         const cachedBucket = await redisClient.get(key);
 
-        //console.log("RAW REDIS VALUE:", cachedBucket);
+        console.log("RAW REDIS VALUE:", cachedBucket);
 
         const bucket = JSON.parse(cachedBucket);
 
