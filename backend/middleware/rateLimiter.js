@@ -12,7 +12,7 @@ export async function rateLimiter(req, res, next) {
 
     const key = `rate_limit:${ip}`;
 
-    //console.log("REDIS KEY:", key);
+    console.log("REDIS KEY:", key);
 
     const exists = await redisClient.exists(key);
 
