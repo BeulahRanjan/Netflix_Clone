@@ -72,7 +72,7 @@ export async function rateLimiter(req, res, next) {
             EX:3600
         });
 
-        //console.log("SET RESULT:", result);
+       console.log("SET RESULT:", result);
 
         const TTL = await redisClient.ttl(key);
         console.log("NEW BUCKET CREATED WITH TTL:", TTL);
