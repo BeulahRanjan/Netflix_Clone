@@ -4,7 +4,7 @@ import redisClient from "../config/redis.js";
     const REFILL_RATE =1;
 export async function rateLimiter(req, res, next) {
 
-    console.log("RATE LIMITER HIT");
+    //console.log("RATE LIMITER HIT");
 
     const ip = req.ip === "::1" || req.ip === "::ffff:127.0.0.1"
         ? "127.0.0.1"
@@ -12,21 +12,21 @@ export async function rateLimiter(req, res, next) {
 
     const key = `rate_limit:${ip}`;
 
-    console.log("REDIS KEY:", key);
+    //console.log("REDIS KEY:", key);
 
     const exists = await redisClient.exists(key);
 
-    console.log("EXISTS:", exists);
+    //console.log("EXISTS:", exists);
 
     if (exists) {
 
         const cachedBucket = await redisClient.get(key);
 
-        console.log("RAW REDIS VALUE:", cachedBucket);
+        //console.log("RAW REDIS VALUE:", cachedBucket);
 
         const bucket = JSON.parse(cachedBucket);
 
-        console.log("BUCKET BEFORE REFILL:", bucket);
+        //console.log("BUCKET BEFORE REFILL:", bucket);
     //const bucket= JSON.parse(await redisClient.get(key));
     const now= Date.now();
     //const REFILL_RATE =5;
@@ -34,17 +34,17 @@ export async function rateLimiter(req, res, next) {
     const elapsedSeconds=elapsedTime/1000;
     const tokensToAdd= elapsedSeconds * REFILL_RATE;
     
-    console.log("NOW:", now);
-    console.log("LAST REFILL:", bucket.lastRefillTime);
-    console.log("ELAPSED MS:", elapsedTime);
-    console.log("ELAPSED SEC:", elapsedSeconds);
-    console.log("TOKENS TO ADD:", tokensToAdd);
-    console.log("TOKENS BEFORE:", bucket.tokens);
+    //console.log("NOW:", now);
+    //console.log("LAST REFILL:", bucket.lastRefillTime);
+    //console.log("ELAPSED MS:", elapsedTime);
+    //console.log("ELAPSED SEC:", elapsedSeconds);
+    //console.log("TOKENS TO ADD:", tokensToAdd);
+    //console.log("TOKENS BEFORE:", bucket.tokens);
     bucket.tokens= Math.min(bucket.tokens + tokensToAdd, CAPACITY);
-    console.log("TOKENS AFTER REFILL:", bucket.tokens);
+    //console.log("TOKENS AFTER REFILL:", bucket.tokens);
     bucket.lastRefillTime= now;
-    console.log("IP:", ip);
-    console.log("Tokens:",bucket.tokens);
+    //console.log("IP:", ip);
+    //console.log("Tokens:",bucket.tokens);
 
     if(bucket.tokens>=1){
         bucket.tokens--;
@@ -72,10 +72,10 @@ export async function rateLimiter(req, res, next) {
             EX:3600
         });
 
-        console.log("SET RESULT:", result);
+        //console.log("SET RESULT:", result);
 
         const TTL = await redisClient.ttl(key);
-        console.log("NEW BUCKET CREATED WITH TTL:", TTL);
+        //console.log("NEW BUCKET CREATED WITH TTL:", TTL);
 
         return next();
     }
