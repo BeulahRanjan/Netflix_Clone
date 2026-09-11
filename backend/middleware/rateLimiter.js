@@ -16,7 +16,7 @@ export async function rateLimiter(req, res, next) {
 
     const exists = await redisClient.exists(key);
 
-    console.log("EXISTS:", exists);
+    //console.log("EXISTS:", exists);
 
     if (exists) {
 
