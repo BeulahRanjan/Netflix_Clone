@@ -1,7 +1,7 @@
 import redisClient from "../config/redis.js";
 
     const CAPACITY =3;
-    const REFILL_RATE =1;
+    const REFILL_RATE =0;
 export async function rateLimiter(req, res, next) {
 
     console.log("RATE LIMITER HIT");
@@ -34,17 +34,17 @@ export async function rateLimiter(req, res, next) {
     const elapsedSeconds=elapsedTime/1000;
     const tokensToAdd= elapsedSeconds * REFILL_RATE;
     
-    console.log("NOW:", now);
-    console.log("LAST REFILL:", bucket.lastRefillTime);
-    console.log("ELAPSED MS:", elapsedTime);
-    console.log("ELAPSED SEC:", elapsedSeconds);
-    console.log("TOKENS TO ADD:", tokensToAdd);
-    console.log("TOKENS BEFORE:", bucket.tokens);
+    //console.log("NOW:", now);
+    //console.log("LAST REFILL:", bucket.lastRefillTime);
+    //console.log("ELAPSED MS:", elapsedTime);
+    //console.log("ELAPSED SEC:", elapsedSeconds);
+    //console.log("TOKENS TO ADD:", tokensToAdd);
+    //console.log("TOKENS BEFORE:", bucket.tokens);
     bucket.tokens= Math.min(bucket.tokens + tokensToAdd, CAPACITY);
-    console.log("TOKENS AFTER REFILL:", bucket.tokens);
+    //console.log("TOKENS AFTER REFILL:", bucket.tokens);
     bucket.lastRefillTime= now;
-    console.log("IP:", ip);
-    console.log("Tokens:",bucket.tokens);
+    //console.log("IP:", ip);
+    //console.log("Tokens:",bucket.tokens);
 
     if(bucket.tokens>=1){
         bucket.tokens--;
@@ -53,7 +53,7 @@ export async function rateLimiter(req, res, next) {
         });
         return next();
     }
-
+  console.log("RATE LIMIT EXCEEDED");
     return res.status(429).json({
         success:false,
         message:"Too many requests"
