@@ -1,7 +1,7 @@
 import redisClient from "../config/redis.js";
 
     const CAPACITY =3;
-    const REFILL_RATE =0;
+    const REFILL_RATE =1;
 export async function rateLimiter(req, res, next) {
 
     console.log("RATE LIMITER HIT");
@@ -25,6 +25,7 @@ export async function rateLimiter(req, res, next) {
         console.log("RAW REDIS VALUE:", cachedBucket);
 
         const bucket = JSON.parse(cachedBucket);
+        await new Promise(resolve => setTimeout(resolve, 1000));
 
         console.log("BUCKET BEFORE REFILL:", bucket);
     //const bucket= JSON.parse(await redisClient.get(key));
